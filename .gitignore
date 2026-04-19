@@ -18,8 +18,7 @@ npm-debug.log
 .env.local
 *.key
 
-# Large media (add manually via Git LFS if needed)
-*.mp4
+# Large media
 *.mov
 *.avi
 
