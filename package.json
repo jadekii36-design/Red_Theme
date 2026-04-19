@@ -1,0 +1,11 @@
+{
+  "name": "red-dragon-theme-studio",
+  "version": "1.0.0",
+  "description": "Red Dragon Theme Studio — Handcrafted website themes",
+  "scripts": {
+    "start": "npx serve . -p $PORT --no-clipboard"
+  },
+  "dependencies": {
+    "serve": "^14.2.3"
+  }
+}
