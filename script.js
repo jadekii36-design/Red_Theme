@@ -421,189 +421,32 @@ setTimeout(initReveal, 1000);
 
 
 /* ════════════════════════════════════════════════════════════
-   HERO — placeholder (canvas disabled)
+   LAZY IFRAME LOADER — load iframes only when scrolled into view
 ════════════════════════════════════════════════════════════ */
-(function initDragonCanvas() {
-  // disabled
-  return;
-  const cv = document.getElementById('dragonCanvas');
-  if (!cv) return;
-  const ctx = cv.getContext('2d');
-  let W, H, scaleList = [];
-
-  // Scale size — big enough to be clearly visible
-  const SW = 80, SH = 70;
-
-  function buildScales() {
-    scaleList = [];
-    const cols = Math.ceil(W / SW) + 3;
-    const rows = Math.ceil(H / (SH * 0.62)) + 4;
-    for (let r = 0; r < rows; r++) {
-      for (let c = 0; c < cols; c++) {
-        const stagger = (r % 2) * SW * 0.5;
-        scaleList.push({
-          cx:    c * SW + stagger - SW,
-          cy:    r * (SH * 0.62) - SH,
-          phase: Math.random() * Math.PI * 2,
-          spd:   0.004 + Math.random() * 0.004,
-          rVar:  Math.floor(Math.random() * 35),
-        });
+(function lazyLoadIframes() {
+  const iframeObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const iframe = entry.target;
+      const src = iframe.getAttribute('data-src');
+      if (src && !iframe.src) {
+        iframe.src = src;
       }
-    }
-  }
+      iframeObs.unobserve(iframe);
+    });
+  }, { rootMargin: '200px' });
 
-  function resize() {
-    W = cv.width  = cv.offsetWidth  || window.innerWidth;
-    H = cv.height = cv.offsetHeight || window.innerHeight;
-    buildScales();
-  }
-  resize();
-  window.addEventListener('resize', resize);
-
-  /* ── Draw one organic rounded scale ── */
-  function drawScale(cx, cy, brightness, shimmer) {
-    const w  = SW * 0.92;
-    const h  = SH * 0.95;
-    const rx = w / 2;
-    const ry = h / 2;
-
-    // Scale shape: rounded top, pointed bottom tip (like a shield/teardrop)
-    ctx.beginPath();
-    ctx.moveTo(cx, cy - ry);                                          // top center
-    ctx.bezierCurveTo(cx + rx, cy - ry,   cx + rx, cy,      cx + rx * 0.6, cy + ry * 0.3);
-    ctx.bezierCurveTo(cx + rx * 0.3, cy + ry, cx, cy + ry,  cx, cy + ry);  // right side → bottom tip
-    ctx.bezierCurveTo(cx - rx * 0.3, cy + ry, cx - rx * 0.3, cy + ry, cx - rx * 0.6, cy + ry * 0.3);
-    ctx.bezierCurveTo(cx - rx, cy,   cx - rx, cy - ry,  cx, cy - ry);      // left side → top
-    ctx.closePath();
-
-    // Base radial gradient — 3D convex dome look
-    const b  = 80 + brightness * 120 + shimmer * 60;
-    const g1 = ctx.createRadialGradient(cx - rx*0.2, cy - ry*0.35, 0, cx, cy, Math.max(rx,ry) * 1.1);
-    g1.addColorStop(0,    `rgb(${Math.min(b+100,255)}, ${Math.floor(b*0.06)}, ${Math.floor(b*0.02)})`); // bright highlight
-    g1.addColorStop(0.25, `rgb(${Math.min(b+40,220)},  ${Math.floor(b*0.03)}, 0)`);
-    g1.addColorStop(0.55, `rgb(${Math.max(b,60)},       0, 0)`);
-    g1.addColorStop(0.8,  `rgb(${Math.max(b-50,20)},    0, 0)`);
-    g1.addColorStop(1,    `rgb(${Math.max(b-90,5)},     0, 0)`);           // dark edge
-    ctx.fillStyle = g1;
-    ctx.fill();
-
-    // Specular highlight — top-left bright spot
-    const sx = cx - rx * 0.28;
-    const sy = cy - ry * 0.38;
-    const sg = ctx.createRadialGradient(sx, sy, 0, sx, sy, rx * 0.55);
-    sg.addColorStop(0,   `rgba(255, 180, 100, ${0.55 + shimmer * 0.35})`);
-    sg.addColorStop(0.4, `rgba(255,  80,  20, ${0.18 + shimmer * 0.15})`);
-    sg.addColorStop(1,    'rgba(180,  10,   0, 0)');
-    ctx.beginPath();
-    ctx.moveTo(cx, cy - ry);
-    ctx.bezierCurveTo(cx + rx, cy - ry, cx + rx, cy, cx + rx * 0.6, cy + ry * 0.3);
-    ctx.bezierCurveTo(cx + rx * 0.3, cy + ry, cx, cy + ry, cx, cy + ry);
-    ctx.bezierCurveTo(cx - rx * 0.3, cy + ry, cx - rx * 0.3, cy + ry, cx - rx * 0.6, cy + ry * 0.3);
-    ctx.bezierCurveTo(cx - rx, cy, cx - rx, cy - ry, cx, cy - ry);
-    ctx.closePath();
-    ctx.fillStyle = sg;
-    ctx.fill();
-
-    // Deep shadow underneath — dark rim at bottom half
-    const dg = ctx.createLinearGradient(cx, cy, cx, cy + ry);
-    dg.addColorStop(0,   'rgba(0,0,0,0)');
-    dg.addColorStop(0.5, 'rgba(0,0,0,0.25)');
-    dg.addColorStop(1,   'rgba(0,0,0,0.65)');
-    ctx.beginPath();
-    ctx.moveTo(cx, cy - ry);
-    ctx.bezierCurveTo(cx + rx, cy - ry, cx + rx, cy, cx + rx * 0.6, cy + ry * 0.3);
-    ctx.bezierCurveTo(cx + rx * 0.3, cy + ry, cx, cy + ry, cx, cy + ry);
-    ctx.bezierCurveTo(cx - rx * 0.3, cy + ry, cx - rx * 0.3, cy + ry, cx - rx * 0.6, cy + ry * 0.3);
-    ctx.bezierCurveTo(cx - rx, cy, cx - rx, cy - ry, cx, cy - ry);
-    ctx.closePath();
-    ctx.fillStyle = dg;
-    ctx.fill();
-
-    // Thin dark outline — separates scales cleanly
-    ctx.beginPath();
-    ctx.moveTo(cx, cy - ry);
-    ctx.bezierCurveTo(cx + rx, cy - ry, cx + rx, cy, cx + rx * 0.6, cy + ry * 0.3);
-    ctx.bezierCurveTo(cx + rx * 0.3, cy + ry, cx, cy + ry, cx, cy + ry);
-    ctx.bezierCurveTo(cx - rx * 0.3, cy + ry, cx - rx * 0.3, cy + ry, cx - rx * 0.6, cy + ry * 0.3);
-    ctx.bezierCurveTo(cx - rx, cy, cx - rx, cy - ry, cx, cy - ry);
-    ctx.closePath();
-    ctx.strokeStyle = 'rgba(0,0,0,0.7)';
-    ctx.lineWidth   = 2;
-    ctx.stroke();
-  }
-
-  /* ── Embers ── */
-  const embers = [];
-  function makeEmber(init) {
-    return {
-      x: W * (0.05 + Math.random() * 0.9),
-      y: init ? Math.random() * H : H + 8,
-      vx: (Math.random() - 0.5) * 0.7,
-      vy: -(0.5 + Math.random() * 1.6),
-      r:  Math.random() * 2.5 + 0.5,
-      life: init ? Math.random() : 0,
-      spd: 0.003 + Math.random() * 0.005,
-      hue: Math.random() * 25
-    };
-  }
-  for (let i = 0; i < 60; i++) embers.push(makeEmber(true));
-
-  let t = 0;
-  let lastFrame = 0;
-  const INTERVAL = 1000 / 30;
-
-  function draw(ts) {
-    requestAnimationFrame(draw);
-    if (ts - lastFrame < INTERVAL) return;
-    lastFrame = ts;
-    t++;
-
-    ctx.clearRect(0, 0, W, H);
-    ctx.fillStyle = '#030000';
-    ctx.fillRect(0, 0, W, H);
-
-    // Slow moving light source
-    const lightX = W * 0.5 + Math.sin(t * 0.008) * W * 0.3;
-    const lightY = H * 0.3 + Math.cos(t * 0.005) * H * 0.2;
-
-    for (const s of scaleList) {
-      const pulse  = (Math.sin(t * s.spd + s.phase) + 1) * 0.5;
-      const dist   = Math.hypot(s.cx - lightX, s.cy - lightY);
-      const lit    = Math.max(0, 1 - dist / (Math.max(W,H) * 0.55));
-      const bright = pulse * 0.4 + lit * 0.6;
-      const shimmer= Math.max(0, 1 - dist / (Math.max(W,H) * 0.18)) * 0.9;
-      drawScale(s.cx, s.cy, bright, shimmer);
-    }
-
-    // Vignette — dark edges
-    const vig = ctx.createRadialGradient(W*0.5, H*0.45, H*0.08, W*0.5, H*0.5, Math.max(W,H)*0.7);
-    vig.addColorStop(0,    'rgba(0,0,0,0)');
-    vig.addColorStop(0.5,  'rgba(0,0,0,0.3)');
-    vig.addColorStop(1,    'rgba(0,0,0,0.85)');
-    ctx.fillStyle = vig;
-    ctx.fillRect(0, 0, W, H);
-
-    // Embers
-    if (Math.random() < 0.4) embers.push(makeEmber(false));
-    for (let i = embers.length - 1; i >= 0; i--) {
-      const e = embers[i];
-      e.x += e.vx + Math.sin(t * 0.02 + i) * 0.3;
-      e.y += e.vy;
-      e.life += e.spd;
-      if (e.life >= 1 || e.y < -10) { embers.splice(i,1); continue; }
-      const a = Math.sin(e.life * Math.PI);
-      ctx.shadowColor = `hsl(${e.hue},100%,60%)`;
-      ctx.shadowBlur  = e.r * 6;
-      ctx.fillStyle   = `hsla(${e.hue},100%,72%,${a})`;
-      ctx.beginPath();
-      ctx.arc(e.x, e.y, e.r, 0, Math.PI*2);
-      ctx.fill();
-      ctx.shadowBlur = 0;
-    }
-  }
-
-  requestAnimationFrame(draw);
+  document.querySelectorAll('iframe[data-src]').forEach(el => iframeObs.observe(el));
 })();
+
+/* ════════════════════════════════════════════════════════════
+   PAGE VISIBILITY — pause all animations when tab is hidden
+════════════════════════════════════════════════════════════ */
+document.addEventListener('visibilitychange', () => {
+  const paused = document.hidden ? 'paused' : 'running';
+  document.querySelectorAll('.orb, .fire-dot, .gate-enter-btn, .logo-dragon')
+    .forEach(el => { el.style.animationPlayState = paused; });
+});
 
 /* ── Dragon Collection — per-letter bounce animation ── */
 (function() {
@@ -621,16 +464,22 @@ setTimeout(initReveal, 1000);
   });
 })();
 
-// Nav active link
+// ── Throttled scroll for nav active link ──
 const sections = document.querySelectorAll('section[id]');
 const navLinks  = document.querySelectorAll('.nav-links a');
+let _scrollTick = false;
 window.addEventListener('scroll', () => {
-  let cur = '';
-  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) cur = s.id; });
-  navLinks.forEach(a => {
-    a.style.color = a.getAttribute('href') === `#${cur}` ? 'var(--orange-hot)' : '';
+  if (_scrollTick) return;
+  _scrollTick = true;
+  requestAnimationFrame(() => {
+    let cur = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) cur = s.id; });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === `#${cur}` ? 'var(--orange-hot)' : '';
+    });
+    _scrollTick = false;
   });
-});
+}, { passive: true });
 
 /* ════════════════════════════════════════════════════════════
    BLOCK HORIZONTAL SCROLL — mobile & desktop
@@ -676,10 +525,14 @@ window.addEventListener('scroll', () => {
     });
   }
 
-  // Run after page fully loads and on resize
-  window.addEventListener('load',   fixOverflowingElements);
-  window.addEventListener('resize', fixOverflowingElements);
-  // Also run shortly after (for dynamic content)
-  setTimeout(fixOverflowingElements, 500);
-  setTimeout(fixOverflowingElements, 1500);
+  // Run once after load — no need to repeat
+  window.addEventListener('load', fixOverflowingElements, { once: true });
+
+  // Throttled resize
+  let _resizeTick = false;
+  window.addEventListener('resize', () => {
+    if (_resizeTick) return;
+    _resizeTick = true;
+    setTimeout(() => { fixOverflowingElements(); _resizeTick = false; }, 200);
+  });
 })();

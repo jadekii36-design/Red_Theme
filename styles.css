@@ -540,11 +540,11 @@ body {
   pointer-events:none;
 }
 .hero-bg-orbs { position:absolute;inset:0;pointer-events:none;overflow:hidden; }
-.orb { position:absolute;border-radius:50%;filter:blur(80px);opacity:0.12;animation:orbFloat 10s ease-in-out infinite alternate; }
+.orb { position:absolute;border-radius:50%;filter:blur(80px);opacity:0.12;animation:orbFloat 10s ease-in-out infinite alternate;will-change:transform; }
 .orb1{width:clamp(200px,40vw,400px);height:clamp(200px,40vw,400px);background:#e05c00;top:10%;left:10%;animation-delay:0s;}
 .orb2{width:clamp(150px,30vw,300px);height:clamp(150px,30vw,300px);background:#c0392b;top:30%;right:5%;animation-delay:-3s;}
 .orb3{width:clamp(200px,50vw,500px);height:clamp(100px,20vw,200px);background:#ff4500;bottom:10%;left:25%;animation-delay:-6s;}
-@keyframes orbFloat { from{transform:translate(0,0) scale(1)} to{transform:translate(20px,-30px) scale(1.1)} }
+@keyframes orbFloat { from{transform:translate3d(0,0,0) scale(1)} to{transform:translate3d(20px,-30px,0) scale(1.1)} }
 
 .hero-content { position:relative;z-index:2;max-width:700px;margin-bottom:0;padding:0 40px;text-align:center;width:100%; }
 .hero-eyebrow { font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:6px;color:var(--orange-hot);text-transform:uppercase;margin-bottom:16px;opacity:0;animation:fadeUp 0.8s ease 0.3s forwards; }
@@ -919,7 +919,7 @@ body {
 .filter-btn  { font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:3px;text-transform:uppercase;padding:10px 24px;border:1px solid var(--glass-border);background:transparent;color:var(--text-dim);cursor:pointer;transition:all 0.3s; }
 .filter-btn:hover,.filter-btn.active { background:var(--glass);border-color:var(--orange-core);color:var(--orange-hot);box-shadow:0 0 15px rgba(255,100,30,0.15); }
 .themes-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:32px;width:100%; }
-.theme-card { max-width:100%;box-sizing:border-box; }
+.theme-card { max-width:100%;box-sizing:border-box;will-change:transform;contain:layout style; }
 .theme-card  { background:rgba(20,4,0,0.8);border:1px solid var(--glass-border);overflow:hidden;transition:transform 0.3s,box-shadow 0.3s; }
 .theme-card:hover { transform:translateY(-6px);box-shadow:0 20px 60px rgba(200,60,0,0.2),0 0 1px var(--orange-core); }
 .theme-card.hidden-card { display:none; }
