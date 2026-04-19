@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forge Agency — Theme Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --accent:#d4500a; --bg:#120500; --text:#f9ede0; --text-dim:#8a6040; }
+    body { background: var(--bg); color: var(--text); font-family: 'Raleway', sans-serif; min-height: 100vh; }
+    .back-btn { position:fixed;top:20px;left:20px;z-index:999;display:flex;align-items:center;gap:8px;background:rgba(212,80,10,0.15);border:1px solid var(--accent);color:var(--accent);font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:2px;padding:8px 18px;border-radius:4px;text-decoration:none;transition:background 0.2s; }
+    .back-btn:hover { background:rgba(212,80,10,0.3); }
+    .preview-banner { text-align:center;padding:14px;background:rgba(212,80,10,0.12);border-bottom:1px solid rgba(212,80,10,0.25);font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:3px;color:var(--accent);text-transform:uppercase; }
+    .coming-soon { display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100vh - 48px);gap:24px;text-align:center;padding:40px 20px; }
+    .cs-tag { font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:5px;color:var(--accent);text-transform:uppercase;opacity:0.7; }
+    .cs-title { font-family:'Cinzel',serif;font-size:clamp(2rem,6vw,4rem);font-weight:900;color:var(--text);line-height:1.1; }
+    .cs-title span { color:var(--accent); }
+    .cs-sub { font-size:1rem;color:var(--text-dim);max-width:480px;line-height:1.7; }
+    .cs-badge { display:inline-block;border:1px solid var(--accent);color:var(--accent);font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:4px;padding:10px 28px;border-radius:2px;text-transform:uppercase; }
+    .cs-palette { display:flex;gap:10px;margin-top:10px; }
+    .cs-palette span { width:28px;height:28px;border-radius:50%;display:block; }
+  </style>
+</head>
+<body>
+  <a class="back-btn" href="javascript:window.close()">&#8592; Back</a>
+  <div class="preview-banner">&#9670; Live Preview — Forge Agency Theme &#9670;</div>
+  <div class="coming-soon">
+    <p class="cs-tag">— Theme Preview —</p>
+    <h1 class="cs-title">Forge <span>Agency</span></h1>
+    <p class="cs-sub">Strong agency template with bold typography and refined structure. This theme is currently being designed — check back soon.</p>
+    <div class="cs-palette">
+      <span style="background:#d4500a"></span>
+      <span style="background:#120500"></span>
+      <span style="background:#f9ede0"></span>
+    </div>
+    <span class="cs-badge">Coming Soon</span>
+  </div>
+</body>
+</html>

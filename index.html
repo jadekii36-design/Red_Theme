@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en" style="background:#000;">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Red Dragon — Theme Studio</title>
+  <style>
+    /* Anti-flash + hard horizontal lock */
+    html, body {
+      background: #000 !important;
+      margin: 0; padding: 0;
+      overflow-x: clip;
+      width: 100%;
+      max-width: 100%;
+    }
+    /* Hide everything until gate is ready */
+    body { visibility: hidden; }
+    /* Hard clip wrapper — nothing escapes viewport width */
+    #site-clip {
+      width: 100%;
+      max-width: 100vw;
+      overflow: hidden;
+      position: relative;
+    }
+  </style>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Cinzel+Decorative:wght@400;700&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     SCREEN 1 — ACCESS GATE
+══════════════════════════════════════════ -->
+<div id="access-gate">
+
+  <!-- ── 3D Dragon background video (drop your file as "dragon-bg.mp4") ── -->
+  <video id="gateBgVideo" autoplay muted loop playsinline>
+    <source src="dragon-bg.mp4" type="video/mp4" />
+    <source src="dragon-bg.webm" type="video/webm" />
+  </video>
+
+  <canvas id="gateParticles"></canvas>
+
+  <div class="gate-ui">
+    <div class="gate-ornament-top">
+      <span class="orn-line"></span>
+      <span class="orn-diamond"></span>
+      <span class="orn-line"></span>
+    </div>
+
+    <p class="gate-eyebrow">— EST. MMXXVI —</p>
+
+    <h1 class="gate-title">RED<br>DRAGON</h1>
+
+    <div class="gate-fire-line">
+      <span class="fire-dot"></span>
+      <span class="fire-dash"></span>
+      <span class="fire-dot"></span>
+    </div>
+
+    <p class="gate-subtitle">Theme Studio</p>
+
+    <p class="gate-tagline">Handcrafted Digital Experiences</p>
+
+    <div class="gate-btn-wrap">
+      <span class="khmer-orn">❧</span>
+      <button class="gate-enter-btn" id="gateEnterBtn">
+        <span class="btn-text">ENTER</span>
+        <span class="btn-underline"></span>
+      </button>
+      <span class="khmer-orn">❧</span>
+    </div>
+
+    <div class="gate-ornament-bot">
+      <span class="orn-line"></span>
+      <span class="orn-diamond"></span>
+      <span class="orn-line"></span>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- ══════════════════════════════════════════
+     REALM TRANSITION VEIL
+══════════════════════════════════════════ -->
+<div id="realm-veil">
+  <div class="veil-panel veil-left"></div>
+  <div class="veil-panel veil-right"></div>
+  <canvas id="realmCanvas"></canvas>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SCREEN 3 — MAIN WEBSITE
+══════════════════════════════════════════ -->
+<div id="site-clip">
+<div id="main-site" class="hidden">
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="nav-logo">
+      <span class="logo-dragon">&#9670;</span>
+      <span class="logo-text">RED DRAGON</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#themes">Themes</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <!-- ── Hero background ── -->
+    <div class="hero-bg-anim"></div>
+
+    <div class="hero-bg-orbs">
+      <div class="orb orb1"></div>
+      <div class="orb orb2"></div>
+      <div class="orb orb3"></div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Welcome to my</p>
+      <div class="hero-title-block">
+        <h1 class="hero-word-theme">Theme</h1>
+        <h1 class="hero-word-collection">Collection</h1>
+      </div>
+      <p class="hero-sub">Explore handcrafted website themes built for modern brands.<br>Choose your style — I will bring it to life.</p>
+      <a href="#themes" class="cta-btn">Browse Themes</a>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <div class="scroll-line"></div>
+      <span>SCROLL</span>
+    </div>
+  </section>
+
+  <!-- STATS BAR — Infinite Glitch Ticker -->
+  <div class="ticker-bar">
+    <div class="ticker-fade-left"></div>
+    <div class="ticker-fade-right"></div>
+    <div class="ticker-track">
+      <div class="ticker-inner" id="tickerInner">
+        <span class="t-item" data-text="Premium Themes">Premium Themes</span>
+        <span class="t-sep">◆</span>
+        <span class="t-item" data-text="100% Custom Design">100% Custom Design</span>
+        <span class="t-sep">◆</span>
+        <span class="t-item" data-text="Happy Clients">Happy Clients</span>
+        <span class="t-sep">◆</span>
+        <span class="t-item" data-text="24/7 Support">24/7 Support</span>
+        <span class="t-sep">◆</span>
+        <span class="t-item" data-text="Handcrafted Themes">Handcrafted Themes</span>
+        <span class="t-sep">◆</span>
+        <span class="t-item" data-text="Modern Design">Modern Design</span>
+        <span class="t-sep">◆</span>
+        <!-- duplicate for seamless loop -->
+        <span class="t-item" data-text="Premium Themes">Premium Themes</span>
+        <span class="t-sep">◆</span>
+        <span class="t-item" data-text="100% Custom Design">100% Custom Design</span>
+        <span class="t-sep">◆</span>
+        <span class="t-item" data-text="Happy Clients">Happy Clients</span>
+        <span class="t-sep">◆</span>
+        <span class="t-item" data-text="24/7 Support">24/7 Support</span>
+        <span class="t-sep">◆</span>
+        <span class="t-item" data-text="Handcrafted Themes">Handcrafted Themes</span>
+        <span class="t-sep">◆</span>
+        <span class="t-item" data-text="Modern Design">Modern Design</span>
+        <span class="t-sep">◆</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- THEMES -->
+  <section class="themes-section" id="themes">
+    <div class="section-header">
+      <p class="section-eyebrow">— Portfolio —</p>
+      <h2 class="section-title">My Theme <span class="fire-text">Styles</span></h2>
+      <p class="section-desc">Each theme is crafted with care. Click any card to preview the full design.</p>
+    </div>
+    <div class="themes-grid" id="themesGrid">
+      <div class="theme-card vg-card" data-category="business">
+        <div class="card-preview vg-preview" style="--accent:#a3e635;--bg:#0d0d0d;">
+          <!-- Live iframe preview scaled to fit -->
+          <div class="vg-frame-wrap">
+            <iframe class="vg-iframe" src="themes/ember-corporate/" scrolling="no" tabindex="-1" aria-hidden="true"></iframe>
+          </div>
+          <!-- Green glow overlay tint -->
+          <div class="vg-tint"></div>
+          <div class="card-overlay">
+            <a href="themes/ember-corporate/" target="_blank" class="vg-preview-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Live Preview
+            </a>
+          </div>
+        </div>
+        <div class="card-info vg-card-info">
+          <div class="vg-card-tag">
+            <svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="#a3e635"/></svg>
+            Banking &amp; Loans
+          </div>
+          <h3 class="card-name vg-card-name">VaultGreen</h3>
+          <p class="card-desc">Smart loan application &amp; banking platform. Dark + light, fully animated.</p>
+          <div class="card-meta">
+            <span class="theme-code">D-3691</span>
+            <span class="theme-price">$250<span>/M</span></span>
+          </div>
+          <div class="card-footer">
+            <div class="card-palette">
+              <span style="background:#a3e635;border-color:rgba(163,230,53,0.4);"></span>
+              <span style="background:#0d0d0d"></span>
+              <span style="background:#eef4e7;border-color:rgba(163,230,53,0.2);"></span>
+            </div>
+            <span class="card-badge vg-badge">Popular</span>
+          </div>
+        </div>
+      </div>
+      <div class="theme-card ft-card" data-category="business">
+        <div class="card-preview ft-preview" style="--accent:#16a34a;--bg:#0a1f12;">
+          <div class="ft-frame-wrap">
+            <iframe class="ft-iframe" src="themes/crimson-folio/" scrolling="no" tabindex="-1" aria-hidden="true"></iframe>
+          </div>
+          <div class="ft-tint"></div>
+          <div class="card-overlay">
+            <a href="themes/crimson-folio/" target="_blank" class="ft-preview-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Live Preview
+            </a>
+          </div>
+        </div>
+        <div class="card-info ft-card-info">
+          <div class="ft-card-tag">
+            <svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="#16a34a"/></svg>
+            Home Loans
+          </div>
+          <h3 class="card-name ft-card-name">FinTrust</h3>
+          <p class="card-desc">Professional home loan &amp; mortgage platform. Clean light theme, trusted banking.</p>
+          <div class="card-meta">
+            <span class="theme-code">D-3692</span>
+            <span class="theme-price">$250<span>/M</span></span>
+          </div>
+          <div class="card-footer">
+            <div class="card-palette">
+              <span style="background:#16a34a;border-color:rgba(22,163,74,0.4);"></span>
+              <span style="background:#0a1f12"></span>
+              <span style="background:#eef7f1;border-color:rgba(22,163,74,0.2);"></span>
+            </div>
+            <span class="card-badge ft-badge">New</span>
+          </div>
+        </div>
+      </div>
+      <div class="theme-card rl-card" data-category="business">
+        <div class="card-preview rl-preview" style="--accent:#4ade80;--bg:#1a2e35;">
+          <div class="rl-frame-wrap">
+            <iframe class="rl-iframe" src="themes/royal-loan/" scrolling="no" tabindex="-1" aria-hidden="true"></iframe>
+          </div>
+          <div class="rl-tint"></div>
+          <div class="card-overlay">
+            <a href="themes/royal-loan/" target="_blank" class="rl-preview-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Live Preview
+            </a>
+          </div>
+        </div>
+        <div class="card-info rl-card-info">
+          <div class="rl-card-tag">
+            <svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="#4ade80"/></svg>
+            Premium Loans
+          </div>
+          <h3 class="card-name rl-card-name">RoyalLoan</h3>
+          <p class="card-desc">Premium loan & investment platform. Dark teal with emerald waves, trusted banking.</p>
+          <div class="card-meta">
+            <span class="theme-code">D-3693</span>
+            <span class="theme-price">$250<span>/M</span></span>
+          </div>
+          <div class="card-footer">
+            <div class="card-palette">
+              <span style="background:#4ade80;border-color:rgba(74,222,128,0.4);"></span>
+              <span style="background:#1a2e35"></span>
+              <span style="background:#d4a853;border-color:rgba(212,168,83,0.3);"></span>
+            </div>
+            <span class="card-badge rl-badge">Premium</span>
+          </div>
+        </div>
+      </div>
+      <div class="theme-card" data-category="ecommerce">
+        <div class="card-preview" style="--accent:#ff6b35;--bg:#140a00;">
+          <div class="preview-mockup"><div class="mockup-nav"></div><div class="mockup-hero" style="background:linear-gradient(135deg,#ff6b3533,transparent)"></div><div class="mockup-cards"><div class="mockup-card"></div><div class="mockup-card"></div><div class="mockup-card"></div></div></div>
+          <div class="card-overlay"><a href="themes/blaze-market/" target="_blank" class="preview-btn">Live Preview</a></div>
+        </div>
+        <div class="card-info">
+          <div class="card-tag">E-Commerce</div>
+          <h3 class="card-name">Blaze Market</h3>
+          <p class="card-desc">High-converting shop layout with warm tones that drive action.</p>
+          <div class="card-footer"><div class="card-palette"><span style="background:#ff6b35"></span><span style="background:#140a00"></span><span style="background:#ffe0cc"></span></div><span class="card-badge">Hot</span></div>
+        </div>
+      </div>
+      <div class="theme-card az-card" data-category="business">
+        <div class="card-preview az-preview" style="--accent:#38bdf8;--bg:#060d1f;">
+          <div class="az-frame-wrap">
+            <iframe class="az-iframe" src="themes/azure-market/" scrolling="no" tabindex="-1" aria-hidden="true"></iframe>
+          </div>
+          <div class="az-tint"></div>
+          <div class="card-overlay">
+            <a href="themes/azure-market/" target="_blank" class="az-preview-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Live Preview
+            </a>
+          </div>
+        </div>
+        <div class="card-info az-card-info">
+          <div class="az-card-tag">
+            <svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="#38bdf8"/></svg>
+            Personal Loans
+          </div>
+          <h3 class="card-name az-card-name">Azure Loan</h3>
+          <p class="card-desc">Modern glassmorphism loan platform. Navy blue, fast approval, trusted lending.</p>
+          <div class="card-meta">
+            <span class="theme-code">D-3694</span>
+            <span class="theme-price">$250<span>/M</span></span>
+          </div>
+          <div class="card-footer">
+            <div class="card-palette">
+              <span style="background:#38bdf8;border-color:rgba(56,189,248,0.4);"></span>
+              <span style="background:#060d1f"></span>
+              <span style="background:#818cf8;border-color:rgba(129,140,248,0.3);"></span>
+            </div>
+            <span class="card-badge az-badge">New</span>
+          </div>
+        </div>
+      </div>
+      <div class="theme-card" data-category="creative">
+        <div class="card-preview" style="--accent:#9b1b30;--bg:#08030a;">
+          <div class="preview-mockup"><div class="mockup-nav"></div><div class="mockup-hero" style="background:linear-gradient(135deg,#9b1b3033,transparent)"></div><div class="mockup-cards"><div class="mockup-card"></div><div class="mockup-card"></div><div class="mockup-card"></div></div></div>
+          <div class="card-overlay"><a href="themes/dragon-arts/" target="_blank" class="preview-btn">Live Preview</a></div>
+        </div>
+        <div class="card-info">
+          <div class="card-tag">Creative</div>
+          <h3 class="card-name">Dragon Arts</h3>
+          <p class="card-desc">Dark, immersive design for artists and photographers who tell stories.</p>
+          <div class="card-footer"><div class="card-palette"><span style="background:#9b1b30"></span><span style="background:#08030a"></span><span style="background:#e8c4c4"></span></div><span class="card-badge new">New</span></div>
+        </div>
+      </div>
+      <div class="theme-card" data-category="business">
+        <div class="card-preview" style="--accent:#d4500a;--bg:#120500;">
+          <div class="preview-mockup"><div class="mockup-nav"></div><div class="mockup-hero" style="background:linear-gradient(135deg,#d4500a33,transparent)"></div><div class="mockup-cards"><div class="mockup-card"></div><div class="mockup-card"></div><div class="mockup-card"></div></div></div>
+          <div class="card-overlay"><a href="themes/forge-agency/" target="_blank" class="preview-btn">Live Preview</a></div>
+        </div>
+        <div class="card-info">
+          <div class="card-tag">Business</div>
+          <h3 class="card-name">Forge Agency</h3>
+          <p class="card-desc">Strong agency template with bold typography and refined structure.</p>
+          <div class="card-footer"><div class="card-palette"><span style="background:#d4500a"></span><span style="background:#120500"></span><span style="background:#f9ede0"></span></div></div>
+        </div>
+      </div>
+      <div class="theme-card" data-category="portfolio">
+        <div class="card-preview" style="--accent:#ff4500;--bg:#0f0200;">
+          <div class="preview-mockup"><div class="mockup-nav"></div><div class="mockup-hero" style="background:linear-gradient(135deg,#ff450033,transparent)"></div><div class="mockup-cards"><div class="mockup-card"></div><div class="mockup-card"></div><div class="mockup-card"></div></div></div>
+          <div class="card-overlay"><a href="themes/inferno-cv/" target="_blank" class="preview-btn">Live Preview</a></div>
+        </div>
+        <div class="card-info">
+          <div class="card-tag">Portfolio</div>
+          <h3 class="card-name">Inferno CV</h3>
+          <p class="card-desc">Personal resume / CV theme that stands out and leaves an impression.</p>
+          <div class="card-footer"><div class="card-palette"><span style="background:#ff4500"></span><span style="background:#0f0200"></span><span style="background:#fff0e6"></span></div><span class="card-badge">Popular</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about">
+    <div class="about-inner">
+      <div class="about-visual">
+        <div class="about-frame">
+          <div class="about-glow"></div>
+          <div class="about-icon">&#9775;</div>
+        </div>
+      </div>
+      <div class="about-content">
+        <p class="section-eyebrow">— About Me —</p>
+        <h2 class="section-title">Crafting Digital <span class="fire-text">Worlds</span></h2>
+        <p class="about-text">I am a web designer who specializes in building visually powerful, brand-aligned websites. Every theme in my collection is built from scratch — no templates, no shortcuts.</p>
+        <p class="about-text">My work is designed for clients who want a strong online presence that reflects their identity and drives results.</p>
+        <ul class="about-skills">
+          <li><span class="skill-dot"></span>UI / UX Design</li>
+          <li><span class="skill-dot"></span>Frontend Development</li>
+          <li><span class="skill-dot"></span>Brand Identity</li>
+          <li><span class="skill-dot"></span>Motion &amp; Animation</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="section-header">
+      <p class="section-eyebrow">— Get in Touch —</p>
+      <h2 class="section-title">Let's Build Something <span class="fire-text">Great</span></h2>
+      <p class="section-desc">Interested in a theme or want a custom design? Reach out.</p>
+    </div>
+    <div class="contact-cards">
+      <a href="mailto:hello@reddragonstudio.com" class="contact-card"><div class="contact-icon">✉</div><span>Email Me</span></a>
+      <a href="#" class="contact-card"><div class="contact-icon">💬</div><span>Telegram</span></a>
+      <a href="#" class="contact-card"><div class="contact-icon">📱</div><span>WhatsApp</span></a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-logo"><span class="logo-dragon">&#9670;</span><span>RED DRAGON Theme Studio</span></div>
+    <p class="footer-copy">&copy; 2026 Red Dragon Studio. All rights reserved.</p>
+  </footer>
+
+</div><!-- end #main-site -->
+</div><!-- end #site-clip -->
+
+<script src="script.js"></script>
+</body>
+</html>

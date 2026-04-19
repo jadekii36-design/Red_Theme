@@ -1,0 +1,28 @@
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / AI tool settings (local only)
+.vscode/
+.idea/
+.claude/
+.qwen/
+
+# Node (if ever added)
+node_modules/
+npm-debug.log
+
+# Environment / secrets
+.env
+.env.local
+*.key
+
+# Large media (add manually via Git LFS if needed)
+*.mp4
+*.mov
+*.avi
+
+# Build output
+dist/
+build/
