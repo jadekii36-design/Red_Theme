@@ -957,11 +957,8 @@ body {
   letter-spacing: 2px; 
   color: var(--orange-hot); 
 }
-.theme-price { 
-  font-family: 'Cinzel', serif; 
-  font-size: 0.85rem; 
-  font-weight: 700; 
-  color: var(--text-bright); 
+.theme-price {
+  display: none;
 }
 .theme-price span { 
   font-size: 0.65rem; 
