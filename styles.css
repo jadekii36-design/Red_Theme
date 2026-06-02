@@ -1086,6 +1086,153 @@ body {
 
 .az-badge { background: rgba(129,140,248,0.12) !important; color: #818cf8 !important; border-color: rgba(129,140,248,0.3) !important; }
 
+/* ── Rose Loan Live Preview Card ── */
+.rs-card { border-color: rgba(201,146,90,0.22) !important; }
+.rs-card:hover { box-shadow: 0 20px 60px rgba(201,146,90,0.18), 0 0 1px rgba(201,146,90,0.5) !important; }
+.rs-card .card-meta { background: rgba(201,146,90,0.06); border-color: rgba(201,146,90,0.20); }
+.rs-card .theme-code { color: #c9925a; }
+
+.rs-preview { background: #fdf7f3 !important; padding: 0 !important; height: 280px !important; }
+
+.rs-frame-wrap { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+
+.rs-iframe {
+  width: 390px; height: 844px;
+  border: none; display: block;
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%) scale(0.615);
+  animation: iframeFloat 8s ease-in-out infinite;
+}
+
+.rs-tint {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(201,146,90,0.04) 0%, transparent 55%, rgba(245,218,220,0.25) 100%);
+  z-index: 2; pointer-events: none;
+}
+
+.rs-preview-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 2px;
+  text-decoration: none; text-transform: uppercase; color: #fff;
+  background: linear-gradient(135deg, #c9925a, #b8804a); padding: 11px 24px; border-radius: 4px; border: none;
+  box-shadow: 0 4px 20px rgba(201,146,90,0.4); transition: all 0.2s;
+}
+.rs-preview-btn:hover { opacity: 0.92; transform: scale(1.03); }
+
+.rs-card-info { background: linear-gradient(180deg,#fbeee5 0%,#fdf7f3 100%); border-top: 1px solid rgba(201,146,90,0.18); }
+
+.rs-card-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 2.5px;
+  color: #b8804a; border: 1px solid rgba(201,146,90,0.30);
+  padding: 4px 12px; margin-bottom: 12px; text-transform: uppercase;
+  background: rgba(201,146,90,0.07);
+}
+
+.rs-card-name { color: #b8804a !important; }
+.rs-card-info .card-desc { color: #7a5c4a; }
+
+.rs-badge { background: rgba(245,218,220,0.40) !important; color: #c97a7e !important; border-color: rgba(232,179,182,0.45) !important; }
+
+/* ── Secure Loan Live Preview Card ── */
+.sl-card { border-color: rgba(59,130,246,0.18) !important; }
+.sl-card:hover { box-shadow: 0 20px 60px rgba(59,130,246,0.16), 0 0 1px rgba(59,130,246,0.4) !important; }
+.sl-card .card-meta { background: rgba(59,130,246,0.05); border-color: rgba(59,130,246,0.16); }
+.sl-card .theme-code { color: #3b82f6; }
+
+.sl-preview { background: #f0f7ff !important; padding: 0 !important; height: 280px !important; }
+
+.sl-frame-wrap { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+
+.sl-iframe {
+  width: 390px; height: 844px;
+  border: none; display: block;
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%) scale(0.615);
+  animation: iframeFloat 8s ease-in-out infinite;
+}
+
+.sl-tint {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(59,130,246,0.04) 0%, transparent 55%, rgba(224,242,254,0.30) 100%);
+  z-index: 2; pointer-events: none;
+}
+
+.sl-preview-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 2px;
+  text-decoration: none; text-transform: uppercase; color: #fff;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  padding: 11px 24px; border-radius: 4px; border: none;
+  box-shadow: 0 4px 20px rgba(59,130,246,0.38); transition: all 0.2s;
+}
+.sl-preview-btn:hover { opacity: 0.92; transform: scale(1.03); }
+
+.sl-card-info { background: linear-gradient(180deg,#f0f7ff 0%,#f8fbff 100%); border-top: 1px solid rgba(59,130,246,0.12); }
+
+.sl-card-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 2.5px;
+  color: #2563eb; border: 1px solid rgba(59,130,246,0.25);
+  padding: 4px 12px; margin-bottom: 12px; text-transform: uppercase;
+  background: rgba(59,130,246,0.06);
+}
+
+.sl-card-name { color: #2563eb !important; }
+.sl-card-info .card-desc { color: #4a6080; }
+
+.sl-badge { background: rgba(6,182,212,0.10) !important; color: #0891b2 !important; border-color: rgba(6,182,212,0.25) !important; }
+
+/* ── Nova Finance Card (dragon-arts) ── */
+.nf-card { border-color: rgba(139,92,246,0.22) !important; }
+.nf-card:hover { box-shadow: 0 20px 60px rgba(139,92,246,0.18), 0 0 1px rgba(236,72,153,0.3) !important; }
+.nf-card .card-meta { background: rgba(139,92,246,0.06); border-color: rgba(139,92,246,0.18); }
+.nf-card .theme-code { color: #8b5cf6; }
+.nf-preview { background: #f5f3ff !important; padding: 0 !important; height: 280px !important; }
+.nf-frame-wrap { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.nf-iframe { width: 390px; height: 844px; border: none; display: block; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.615); animation: iframeFloat 8s ease-in-out infinite; }
+.nf-tint { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(139,92,246,0.05) 0%, transparent 55%, rgba(253,244,255,0.30) 100%); z-index: 2; pointer-events: none; }
+.nf-preview-btn { display: inline-flex; align-items: center; gap: 8px; font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 2px; text-decoration: none; text-transform: uppercase; color: #fff; background: linear-gradient(135deg, #8b5cf6, #ec4899); padding: 11px 24px; border-radius: 4px; border: none; box-shadow: 0 4px 20px rgba(139,92,246,0.38); transition: all 0.2s; }
+.nf-preview-btn:hover { opacity: 0.92; transform: scale(1.03); }
+.nf-card-info { background: linear-gradient(180deg, #f5f3ff 0%, #fdf4ff 100%); border-top: 1px solid rgba(139,92,246,0.14); }
+.nf-card-tag { display: inline-flex; align-items: center; gap: 6px; font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 2.5px; color: #7c3aed; border: 1px solid rgba(139,92,246,0.28); padding: 4px 12px; margin-bottom: 12px; text-transform: uppercase; background: rgba(139,92,246,0.07); }
+.nf-card-name { color: #7c3aed !important; }
+.nf-badge { background: rgba(236,72,153,0.10) !important; color: #db2777 !important; border-color: rgba(236,72,153,0.25) !important; }
+
+/* ── Neo Wallet Card (forge-agency) ── */
+.nw-card { border-color: rgba(212,248,87,0.22) !important; }
+.nw-card:hover { box-shadow: 0 20px 60px rgba(212,248,87,0.14), 0 0 1px rgba(212,248,87,0.4) !important; }
+.nw-card .card-meta { background: rgba(212,248,87,0.06); border-color: rgba(212,248,87,0.20); }
+.nw-card .theme-code { color: #a3c420; }
+.nw-preview { background: #111111 !important; padding: 0 !important; height: 280px !important; }
+.nw-frame-wrap { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.nw-iframe { width: 390px; height: 844px; border: none; display: block; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.615); animation: iframeFloat 8s ease-in-out infinite; }
+.nw-tint { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(212,248,87,0.04) 0%, transparent 55%, rgba(17,17,17,0.40) 100%); z-index: 2; pointer-events: none; }
+.nw-preview-btn { display: inline-flex; align-items: center; gap: 8px; font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 2px; text-decoration: none; text-transform: uppercase; color: #111; background: #d4f857; padding: 11px 24px; border-radius: 4px; border: none; box-shadow: 0 4px 20px rgba(212,248,87,0.40); transition: all 0.2s; }
+.nw-preview-btn:hover { opacity: 0.9; transform: scale(1.03); }
+.nw-card-info { background: linear-gradient(180deg, #1c1c1e 0%, #111111 100%); border-top: 1px solid rgba(212,248,87,0.14); }
+.nw-card-tag { display: inline-flex; align-items: center; gap: 6px; font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 2.5px; color: #a8c820; border: 1px solid rgba(212,248,87,0.28); padding: 4px 12px; margin-bottom: 12px; text-transform: uppercase; background: rgba(212,248,87,0.08); }
+.nw-card-name { color: #d4f857 !important; }
+.nw-card-info .card-desc { color: #888888; }
+.nw-badge { background: rgba(212,248,87,0.10) !important; color: #a8c820 !important; border-color: rgba(212,248,87,0.25) !important; }
+
+/* ── Glow Studio Card (inferno-cv) ── */
+.gs-card { border-color: rgba(196,30,58,0.22) !important; }
+.gs-card:hover { box-shadow: 0 20px 60px rgba(196,30,58,0.20), 0 0 1px rgba(255,36,66,0.4) !important; }
+.gs-card .card-meta { background: rgba(196,30,58,0.06); border-color: rgba(196,30,58,0.18); }
+.gs-card .theme-code { color: #ff6b7a; }
+.gs-preview { background: #0a0a0a !important; padding: 0 !important; height: 280px !important; }
+.gs-frame-wrap { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.gs-iframe { width: 390px; height: 844px; border: none; display: block; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.615); animation: iframeFloat 8s ease-in-out infinite; }
+.gs-tint { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(196,30,58,0.07) 0%, transparent 55%, rgba(10,10,10,0.45) 100%); z-index: 2; pointer-events: none; }
+.gs-preview-btn { display: inline-flex; align-items: center; gap: 8px; font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 2px; text-decoration: none; text-transform: uppercase; color: #fff; background: linear-gradient(135deg, #c41e3a, #8b0000); padding: 11px 24px; border-radius: 4px; border: none; box-shadow: 0 4px 20px rgba(196,30,58,0.45); transition: all 0.2s; }
+.gs-preview-btn:hover { opacity: 0.92; transform: scale(1.03); }
+.gs-card-info { background: linear-gradient(180deg, #1a0005 0%, #0a0a0a 100%); border-top: 1px solid rgba(196,30,58,0.18); }
+.gs-card-tag { display: inline-flex; align-items: center; gap: 6px; font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 2.5px; color: #ff6b7a; border: 1px solid rgba(196,30,58,0.35); padding: 4px 12px; margin-bottom: 12px; text-transform: uppercase; background: rgba(196,30,58,0.10); }
+.gs-card-name { color: #ff6b7a !important; }
+.gs-card-info .card-desc { color: #888888; }
+.gs-badge { background: rgba(196,30,58,0.12) !important; color: #ff6b7a !important; border-color: rgba(196,30,58,0.30) !important; }
+
 
 /* ── VaultGreen Live Preview Card ── */
 .vg-card { border-color: rgba(163,230,53,0.18) !important; }
@@ -1158,6 +1305,20 @@ body {
 /* ============================================================
    ABOUT
    ============================================================ */
+/* Hero Taigy — hidden on desktop, shown on mobile above welcome */
+.hero-taigy { display:none; }
+.hero-taigy .about-frame {
+  width:130px; height:130px;
+  margin:0 auto 24px;
+  border:1px solid var(--glass-border);
+  position:relative; display:flex; align-items:center; justify-content:center;
+}
+.hero-taigy .about-icon { font-size:2.8rem; }
+.hero-taigy .about-frame::before,
+.hero-taigy .about-frame::after { content:'';position:absolute;border:1px solid rgba(255,80,0,0.2); }
+.hero-taigy .about-frame::before { inset:8px;animation:frameSpin 12s linear infinite; }
+.hero-taigy .about-frame::after  { inset:18px;animation:frameSpin 8s linear infinite reverse; }
+
 .about-section { padding:100px 60px;background:rgba(15,3,0,0.6);border-top:1px solid var(--glass-border);border-bottom:1px solid var(--glass-border); }
 .about-inner   { max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.6fr;gap:80px;align-items:center; }
 .about-visual  { display:flex;justify-content:center; }
@@ -1234,6 +1395,9 @@ body {
   .themes-section { padding:50px 16px; width:100%; }
   .themes-grid { grid-template-columns:1fr; width:100%; gap:20px; }
   .theme-card { width:100%; max-width:100%; }
+
+  /* ── Hero Taigy — show on mobile above welcome ── */
+  .hero-taigy { display:block; }
 
   /* ── About ── */
   .about-section { padding:60px 16px; }

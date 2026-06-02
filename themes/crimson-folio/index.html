@@ -4218,6 +4218,7 @@ function countUp(el, target, duration, prefix, suffix, decimals) {
 
 /* ── Stagger reveal ── */
 function staggerReveal(parent, selector, delayStep) {
+  if (!parent) return;
   delayStep = delayStep || 70;
   const els = parent.querySelectorAll(selector);
   els.forEach(el => el.classList.add('stagger-child'));

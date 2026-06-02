@@ -122,6 +122,13 @@
       <div class="orb orb3"></div>
     </div>
     <div class="hero-content">
+      <!-- Taigy — shows only on mobile, above the welcome text -->
+      <div class="hero-taigy">
+        <div class="about-frame">
+          <div class="about-glow"></div>
+          <div class="about-icon">&#9775;</div>
+        </div>
+      </div>
       <p class="hero-eyebrow">Welcome to my</p>
       <div class="hero-title-block">
         <h1 class="hero-word-theme">Theme</h1>
@@ -284,16 +291,72 @@
           </div>
         </div>
       </div>
-      <div class="theme-card" data-category="ecommerce">
-        <div class="card-preview" style="--accent:#ff6b35;--bg:#140a00;">
-          <div class="preview-mockup"><div class="mockup-nav"></div><div class="mockup-hero" style="background:linear-gradient(135deg,#ff6b3533,transparent)"></div><div class="mockup-cards"><div class="mockup-card"></div><div class="mockup-card"></div><div class="mockup-card"></div></div></div>
-          <div class="card-overlay"><a href="themes/blaze-market/" target="_blank" class="preview-btn">Live Preview</a></div>
+      <div class="theme-card sl-card" data-category="business">
+        <div class="card-preview sl-preview" style="--accent:#3b82f6;--bg:#f8fbff;">
+          <div class="sl-frame-wrap">
+            <iframe class="sl-iframe" data-src="themes/blaze-market/" scrolling="no" tabindex="-1" aria-hidden="true"></iframe>
+          </div>
+          <div class="sl-tint"></div>
+          <div class="card-overlay">
+            <a href="themes/blaze-market/" target="_blank" class="sl-preview-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Live Preview
+            </a>
+          </div>
         </div>
-        <div class="card-info">
-          <div class="card-tag">E-Commerce</div>
-          <h3 class="card-name">Blaze Market</h3>
-          <p class="card-desc">High-converting shop layout with warm tones that drive action.</p>
-          <div class="card-footer"><div class="card-palette"><span style="background:#ff6b35"></span><span style="background:#140a00"></span><span style="background:#ffe0cc"></span></div><span class="card-badge">Hot</span></div>
+        <div class="card-info sl-card-info">
+          <div class="sl-card-tag">
+            <svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="#3b82f6"/></svg>
+            Secure Banking
+          </div>
+          <h3 class="card-name sl-card-name">Secure Loan</h3>
+          <p class="card-desc">Fresh pharmacy-blue lending platform. Clean white glassmorphism, trusted & secure finance.</p>
+          <div class="card-meta">
+            <span class="theme-code">D-3696</span>
+            <span class="theme-price">$250<span>/M</span></span>
+          </div>
+          <div class="card-footer">
+            <div class="card-palette">
+              <span style="background:#3b82f6;border-color:rgba(59,130,246,0.4);"></span>
+              <span style="background:#f8fbff;border-color:rgba(59,130,246,0.2);"></span>
+              <span style="background:#06b6d4;border-color:rgba(6,182,212,0.3);"></span>
+            </div>
+            <span class="card-badge sl-badge">Fresh</span>
+          </div>
+        </div>
+      </div>
+      <div class="theme-card rs-card" data-category="business">
+        <div class="card-preview rs-preview" style="--accent:#c9925a;--bg:#fdf7f3;">
+          <div class="rs-frame-wrap">
+            <iframe class="rs-iframe" data-src="themes/rose-loan/" scrolling="no" tabindex="-1" aria-hidden="true"></iframe>
+          </div>
+          <div class="rs-tint"></div>
+          <div class="card-overlay">
+            <a href="themes/rose-loan/" target="_blank" class="rs-preview-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Live Preview
+            </a>
+          </div>
+        </div>
+        <div class="card-info rs-card-info">
+          <div class="rs-card-tag">
+            <svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="#c9925a"/></svg>
+            Luxury Loans
+          </div>
+          <h3 class="card-name rs-card-name">Rose Loan</h3>
+          <p class="card-desc">Elegant rose-gold lending platform. Light glassmorphism, luxury finance, white-glove service.</p>
+          <div class="card-meta">
+            <span class="theme-code">D-3695</span>
+            <span class="theme-price">$250<span>/M</span></span>
+          </div>
+          <div class="card-footer">
+            <div class="card-palette">
+              <span style="background:#c9925a;border-color:rgba(201,146,90,0.4);"></span>
+              <span style="background:#fce7dd"></span>
+              <span style="background:#f5dadc;border-color:rgba(245,218,220,0.5);"></span>
+            </div>
+            <span class="card-badge rs-badge">Luxury</span>
+          </div>
         </div>
       </div>
       <div class="theme-card az-card" data-category="business">
@@ -330,40 +393,106 @@
           </div>
         </div>
       </div>
-      <div class="theme-card" data-category="creative">
-        <div class="card-preview" style="--accent:#9b1b30;--bg:#08030a;">
-          <div class="preview-mockup"><div class="mockup-nav"></div><div class="mockup-hero" style="background:linear-gradient(135deg,#9b1b3033,transparent)"></div><div class="mockup-cards"><div class="mockup-card"></div><div class="mockup-card"></div><div class="mockup-card"></div></div></div>
-          <div class="card-overlay"><a href="themes/dragon-arts/" target="_blank" class="preview-btn">Live Preview</a></div>
+      <div class="theme-card nf-card" data-category="finance">
+        <div class="card-preview nf-preview" style="--accent:#8b5cf6;--bg:#f8f6ff;">
+          <div class="nf-frame-wrap">
+            <iframe class="nf-iframe" data-src="themes/dragon-arts/" scrolling="no" tabindex="-1" aria-hidden="true"></iframe>
+          </div>
+          <div class="nf-tint"></div>
+          <div class="card-overlay">
+            <a href="themes/dragon-arts/" target="_blank" class="nf-preview-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Live Preview
+            </a>
+          </div>
         </div>
-        <div class="card-info">
-          <div class="card-tag">Creative</div>
-          <h3 class="card-name">Dragon Arts</h3>
-          <p class="card-desc">Dark, immersive design for artists and photographers who tell stories.</p>
-          <div class="card-footer"><div class="card-palette"><span style="background:#9b1b30"></span><span style="background:#08030a"></span><span style="background:#e8c4c4"></span></div><span class="card-badge new">New</span></div>
+        <div class="card-info nf-card-info">
+          <div class="nf-card-tag">
+            <svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="#8b5cf6"/></svg>
+            Personal Finance
+          </div>
+          <h3 class="card-name nf-card-name">Violet Loan</h3>
+          <p class="card-desc">Purple-pink gradient loan platform. Modern, vibrant, full application & payment flow.</p>
+          <div class="card-meta">
+            <span class="theme-code">D-3697</span>
+            <span class="theme-price">$250<span>/M</span></span>
+          </div>
+          <div class="card-footer">
+            <div class="card-palette">
+              <span style="background:#8b5cf6;border-color:rgba(139,92,246,0.4);"></span>
+              <span style="background:#f8f6ff;border-color:rgba(139,92,246,0.2);"></span>
+              <span style="background:#ec4899;border-color:rgba(236,72,153,0.3);"></span>
+            </div>
+            <span class="card-badge nf-badge">Trending</span>
+          </div>
         </div>
       </div>
-      <div class="theme-card" data-category="business">
-        <div class="card-preview" style="--accent:#d4500a;--bg:#120500;">
-          <div class="preview-mockup"><div class="mockup-nav"></div><div class="mockup-hero" style="background:linear-gradient(135deg,#d4500a33,transparent)"></div><div class="mockup-cards"><div class="mockup-card"></div><div class="mockup-card"></div><div class="mockup-card"></div></div></div>
-          <div class="card-overlay"><a href="themes/forge-agency/" target="_blank" class="preview-btn">Live Preview</a></div>
+      <div class="theme-card nw-card" data-category="finance">
+        <div class="card-preview nw-preview" style="--accent:#d4f857;--bg:#111111;">
+          <div class="nw-frame-wrap">
+            <iframe class="nw-iframe" data-src="themes/forge-agency/" scrolling="no" tabindex="-1" aria-hidden="true"></iframe>
+          </div>
+          <div class="nw-tint"></div>
+          <div class="card-overlay">
+            <a href="themes/forge-agency/" target="_blank" class="nw-preview-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Live Preview
+            </a>
+          </div>
         </div>
-        <div class="card-info">
-          <div class="card-tag">Business</div>
-          <h3 class="card-name">Forge Agency</h3>
-          <p class="card-desc">Strong agency template with bold typography and refined structure.</p>
-          <div class="card-footer"><div class="card-palette"><span style="background:#d4500a"></span><span style="background:#120500"></span><span style="background:#f9ede0"></span></div></div>
+        <div class="card-info nw-card-info">
+          <div class="nw-card-tag">
+            <svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="#d4f857"/></svg>
+            Digital Wallet
+          </div>
+          <h3 class="card-name nw-card-name">Shadow Loan</h3>
+          <p class="card-desc">Dark neon loan platform. Black + lime green, bold & modern lending experience.</p>
+          <div class="card-meta">
+            <span class="theme-code">D-3698</span>
+            <span class="theme-price">$250<span>/M</span></span>
+          </div>
+          <div class="card-footer">
+            <div class="card-palette">
+              <span style="background:#d4f857;border-color:rgba(212,248,87,0.4);"></span>
+              <span style="background:#111111"></span>
+              <span style="background:#a8d8ff;border-color:rgba(168,216,255,0.3);"></span>
+            </div>
+            <span class="card-badge nw-badge">Dark</span>
+          </div>
         </div>
       </div>
-      <div class="theme-card" data-category="portfolio">
-        <div class="card-preview" style="--accent:#ff4500;--bg:#0f0200;">
-          <div class="preview-mockup"><div class="mockup-nav"></div><div class="mockup-hero" style="background:linear-gradient(135deg,#ff450033,transparent)"></div><div class="mockup-cards"><div class="mockup-card"></div><div class="mockup-card"></div><div class="mockup-card"></div></div></div>
-          <div class="card-overlay"><a href="themes/inferno-cv/" target="_blank" class="preview-btn">Live Preview</a></div>
+      <div class="theme-card gs-card" data-category="beauty">
+        <div class="card-preview gs-preview" style="--accent:#c41e3a;--bg:#0a0a0a;">
+          <div class="gs-frame-wrap">
+            <iframe class="gs-iframe" data-src="themes/inferno-cv/" scrolling="no" tabindex="-1" aria-hidden="true"></iframe>
+          </div>
+          <div class="gs-tint"></div>
+          <div class="card-overlay">
+            <a href="themes/inferno-cv/" target="_blank" class="gs-preview-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Live Preview
+            </a>
+          </div>
         </div>
-        <div class="card-info">
-          <div class="card-tag">Portfolio</div>
-          <h3 class="card-name">Inferno CV</h3>
-          <p class="card-desc">Personal resume / CV theme that stands out and leaves an impression.</p>
-          <div class="card-footer"><div class="card-palette"><span style="background:#ff4500"></span><span style="background:#0f0200"></span><span style="background:#fff0e6"></span></div><span class="card-badge">Popular</span></div>
+        <div class="card-info gs-card-info">
+          <div class="gs-card-tag">
+            <svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="#c41e3a"/></svg>
+            Beauty Booking
+          </div>
+          <h3 class="card-name gs-card-name">Crimson Loan</h3>
+          <p class="card-desc">Dark crimson red loan platform. Dramatic, premium & elite lending experience.</p>
+          <div class="card-meta">
+            <span class="theme-code">D-3699</span>
+            <span class="theme-price">$250<span>/M</span></span>
+          </div>
+          <div class="card-footer">
+            <div class="card-palette">
+              <span style="background:#c41e3a;border-color:rgba(196,30,58,0.4);"></span>
+              <span style="background:#0a0a0a"></span>
+              <span style="background:#ff2442;border-color:rgba(255,36,66,0.3);"></span>
+            </div>
+            <span class="card-badge gs-badge">Stunning</span>
+          </div>
         </div>
       </div>
     </div>

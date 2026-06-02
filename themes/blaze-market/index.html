@@ -1,40 +1,1084 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blaze Market — Theme Preview</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Secure Loan — Theme Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --accent:#ff6b35; --bg:#140a00; --text:#ffe0cc; --text-dim:#8a6050; }
-    body { background: var(--bg); color: var(--text); font-family: 'Raleway', sans-serif; min-height: 100vh; }
-    .back-btn { position:fixed;top:20px;left:20px;z-index:999;display:flex;align-items:center;gap:8px;background:rgba(255,107,53,0.15);border:1px solid var(--accent);color:var(--accent);font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:2px;padding:8px 18px;border-radius:4px;text-decoration:none;transition:background 0.2s; }
-    .back-btn:hover { background:rgba(255,107,53,0.3); }
-    .preview-banner { text-align:center;padding:14px;background:rgba(255,107,53,0.12);border-bottom:1px solid rgba(255,107,53,0.25);font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:3px;color:var(--accent);text-transform:uppercase; }
-    .coming-soon { display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100vh - 48px);gap:24px;text-align:center;padding:40px 20px; }
-    .cs-tag { font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:5px;color:var(--accent);text-transform:uppercase;opacity:0.7; }
-    .cs-title { font-family:'Cinzel',serif;font-size:clamp(2rem,6vw,4rem);font-weight:900;color:var(--text);line-height:1.1; }
-    .cs-title span { color:var(--accent); }
-    .cs-sub { font-size:1rem;color:var(--text-dim);max-width:480px;line-height:1.7; }
-    .cs-badge { display:inline-block;border:1px solid var(--accent);color:var(--accent);font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:4px;padding:10px 28px;border-radius:2px;text-transform:uppercase; }
-    .cs-palette { display:flex;gap:10px;margin-top:10px; }
-    .cs-palette span { width:28px;height:28px;border-radius:50%;display:block; }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{
+      --blue:    #3b82f6;
+      --blue2:   #2563eb;
+      --blue3:   #1d4ed8;
+      --cyan:    #06b6d4;
+      --cyan2:   #0891b2;
+      --mint:    #10b981;
+      --mint2:   #059669;
+      --sky:     #e0f2fe;
+      --sky2:    #bae6fd;
+      --bg:      #f8fbff;
+      --bg2:     #ffffff;
+      --bg3:     #f0f7ff;
+      --text:    #0f2444;
+      --text-m:  #4a6080;
+      --text-d:  #94aec0;
+      --border:  rgba(59,130,246,0.12);
+      --glass:   rgba(255,255,255,0.70);
+      --glassh:  rgba(255,255,255,0.90);
+      --shadow:  0 8px 32px rgba(59,130,246,0.10);
+      --shadow-l:0 3px 12px rgba(59,130,246,0.07);
+    }
+
+    html{scroll-behavior:smooth;overflow-x:hidden;}
+    body{
+      background:linear-gradient(135deg,#f8fbff 0%,#e0f2fe 40%,#f0fdf4 100%);
+      font-family:'Inter',sans-serif;
+      min-height:100vh;display:flex;flex-direction:column;
+      align-items:center;justify-content:flex-start;
+      padding:28px 16px 60px;
+      position:relative;overflow-x:hidden;color:var(--text);
+    }
+    body::before{
+      content:'';position:fixed;top:-120px;right:-100px;
+      width:600px;height:600px;
+      background:radial-gradient(circle,rgba(6,182,212,0.08) 0%,transparent 65%);
+      pointer-events:none;z-index:0;
+    }
+    body::after{
+      content:'';position:fixed;bottom:-100px;left:-80px;
+      width:500px;height:500px;
+      background:radial-gradient(circle,rgba(59,130,246,0.07) 0%,transparent 70%);
+      pointer-events:none;z-index:0;
+    }
+
+    .layout{
+      display:flex;align-items:flex-start;justify-content:center;
+      gap:44px;width:100%;max-width:1060px;position:relative;z-index:1;
+    }
+    .side-panel{
+      display:none;flex-direction:column;gap:24px;
+      padding-top:56px;max-width:260px;flex-shrink:0;
+    }
+    .sp-tag{
+      display:inline-flex;align-items:center;gap:7px;
+      background:rgba(59,130,246,0.07);border:1px solid rgba(59,130,246,0.18);
+      color:var(--blue2);font-size:0.62rem;font-weight:700;
+      letter-spacing:2px;text-transform:uppercase;
+      padding:6px 14px;border-radius:20px;width:fit-content;
+    }
+    .sp-dot{width:6px;height:6px;border-radius:50%;background:var(--blue);animation:pulse 2s infinite;}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+    .sp-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.8rem;font-weight:800;color:var(--text);line-height:1.15;}
+    .sp-title em{color:var(--blue2);font-style:normal;}
+    .sp-desc{font-size:0.82rem;color:var(--text-m);line-height:1.75;}
+    .sp-feats{display:flex;flex-direction:column;gap:10px;}
+    .sp-feat{display:flex;align-items:center;gap:10px;font-size:0.78rem;color:var(--text-m);}
+    .sp-feat-ico{
+      width:24px;height:24px;border-radius:8px;flex-shrink:0;
+      background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.15);
+      display:flex;align-items:center;justify-content:center;
+    }
+    .sp-feat-ico svg{width:12px;height:12px;stroke:var(--blue);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+    .sp-back{
+      display:inline-flex;align-items:center;gap:8px;
+      background:var(--glass);border:1px solid var(--border);
+      color:var(--blue2);font-size:0.73rem;font-weight:700;
+      padding:11px 18px;border-radius:12px;text-decoration:none;cursor:pointer;
+      width:fit-content;transition:all 0.18s;backdrop-filter:blur(10px);
+    }
+    .sp-back:hover{background:var(--glassh);}
+    .sp-back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
+
+    .phone-col{display:flex;flex-direction:column;align-items:center;gap:0;position:relative;z-index:1;flex-shrink:0;}
+    .top-bar{width:100%;max-width:390px;display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;z-index:1;position:relative;}
+    .top-back-btn{
+      display:flex;align-items:center;gap:7px;
+      background:var(--glass);border:1px solid var(--border);
+      color:var(--blue2);font-size:0.7rem;font-weight:600;
+      letter-spacing:0.5px;padding:8px 16px;border-radius:10px;
+      text-decoration:none;cursor:pointer;transition:all 0.15s;backdrop-filter:blur(10px);
+    }
+    .top-back-btn svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;}
+    .top-label{font-size:0.6rem;color:var(--text-d);letter-spacing:2px;text-transform:uppercase;font-weight:600;}
+
+    /* Phone frame */
+    .phone{
+      width:390px;height:844px;
+      background:var(--bg2);border-radius:48px;
+      overflow:hidden;position:relative;flex-shrink:0;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.95),
+        0 0 0 3px var(--bg2),
+        0 0 0 10px var(--sky),
+        0 30px 80px rgba(59,130,246,0.14),
+        0 60px 120px rgba(6,182,212,0.08);
+    }
+
+    .status-bar{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:16px 28px 8px;
+      font-size:0.72rem;font-weight:700;color:var(--text);
+      position:sticky;top:0;z-index:10;background:var(--bg2);
+    }
+    .sb-icons{display:flex;gap:6px;align-items:center;}
+    .sb-icons svg{width:14px;height:14px;stroke:var(--text);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+    .page{display:none;flex-direction:column;height:844px;background:var(--bg2);}
+    .page.active{display:flex;}
+    .page-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;min-height:0;}
+    .page-body::-webkit-scrollbar,*::-webkit-scrollbar{display:none;}
+    *{scrollbar-width:none;}
+
+    .demo-bar{
+      display:flex;align-items:center;justify-content:center;gap:7px;
+      background:rgba(59,130,246,0.05);border-bottom:1px solid rgba(59,130,246,0.10);
+      padding:6px 16px;font-size:0.6rem;font-weight:600;
+      color:var(--blue);letter-spacing:1.5px;text-transform:uppercase;flex-shrink:0;
+    }
+    .demo-bar span{width:5px;height:5px;border-radius:50%;background:var(--blue);display:inline-block;animation:pulse 1.8s ease-in-out infinite;}
+
+    /* Buttons */
+    .btn{
+      width:100%;padding:15px;font-family:'Inter',sans-serif;
+      font-weight:700;font-size:0.9rem;border:none;border-radius:16px;
+      cursor:pointer;transition:all 0.18s;
+      display:flex;align-items:center;justify-content:center;gap:8px;
+    }
+    .btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+    .btn-blue{
+      background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;
+      box-shadow:0 6px 20px rgba(59,130,246,0.28);
+    }
+    .btn-blue:hover{opacity:0.95;transform:translateY(-1px);box-shadow:0 10px 28px rgba(59,130,246,0.38);}
+    .btn-cyan{
+      background:linear-gradient(135deg,var(--cyan),var(--cyan2));color:#fff;
+      box-shadow:0 6px 20px rgba(6,182,212,0.28);
+    }
+    .btn-ghost{
+      background:rgba(255,255,255,0.8);color:var(--text);
+      border:1.5px solid var(--border);backdrop-filter:blur(10px);
+    }
+    .btn-ghost:hover{border-color:var(--blue);color:var(--blue2);}
+    .btn-mint{
+      background:linear-gradient(135deg,var(--mint),var(--mint2));color:#fff;
+      box-shadow:0 6px 20px rgba(16,185,129,0.28);
+    }
+
+    /* Tab bar */
+    .tab-bar{
+      display:flex;align-items:stretch;
+      background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);
+      border-top:1px solid var(--border);
+      flex-shrink:0;height:72px;
+    }
+    .tab-item{
+      flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+      gap:4px;cursor:pointer;transition:all 0.18s;padding:10px 4px;position:relative;
+    }
+    .tab-item svg{width:20px;height:20px;stroke:var(--text-d);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:stroke 0.18s;}
+    .tab-item span{font-size:0.58rem;color:var(--text-d);font-weight:600;letter-spacing:0.3px;transition:color 0.18s;}
+    .tab-item.active svg{stroke:var(--blue);}
+    .tab-item.active span{color:var(--blue);}
+    .tab-item.active::before{
+      content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+      width:36px;height:3px;border-radius:0 0 4px 4px;
+      background:linear-gradient(90deg,var(--blue),var(--cyan));
+    }
+
+    /* ════════ WELCOME ════════ */
+    #pg-welcome{background:linear-gradient(180deg,var(--bg2) 0%,var(--bg3) 100%);}
+
+    .wl-hero{
+      background:linear-gradient(135deg,#e0f2fe 0%,#e0f7fa 40%,#f0fdf4 100%);
+      padding:26px 22px 30px;position:relative;overflow:hidden;
+    }
+    .wl-hero::before{
+      content:'';position:absolute;top:-70px;right:-70px;width:220px;height:220px;border-radius:50%;
+      background:radial-gradient(circle,rgba(255,255,255,0.80) 0%,transparent 70%);pointer-events:none;
+    }
+    .wl-hero::after{
+      content:'';position:absolute;bottom:-40px;left:-40px;width:160px;height:160px;border-radius:50%;
+      background:radial-gradient(circle,rgba(6,182,212,0.12) 0%,transparent 70%);pointer-events:none;
+    }
+    .wl-logo{display:flex;align-items:center;gap:10px;margin-bottom:26px;position:relative;z-index:1;}
+    .logo-box{
+      width:42px;height:42px;border-radius:14px;
+      background:linear-gradient(135deg,var(--blue),var(--cyan));
+      display:flex;align-items:center;justify-content:center;
+      box-shadow:0 6px 18px rgba(59,130,246,0.30);
+    }
+    .logo-box svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+    .logo-name{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.1rem;font-weight:800;color:var(--text);}
+    .logo-name em{color:var(--blue);font-style:normal;}
+
+    .wl-tag{
+      display:inline-flex;align-items:center;gap:6px;
+      background:rgba(255,255,255,0.75);backdrop-filter:blur(8px);
+      border:1px solid rgba(59,130,246,0.18);
+      color:var(--blue2);font-size:0.6rem;font-weight:700;
+      letter-spacing:1.5px;text-transform:uppercase;
+      padding:5px 13px;border-radius:20px;margin-bottom:14px;position:relative;z-index:1;
+    }
+    .wl-tag-dot{width:5px;height:5px;border-radius:50%;background:var(--blue);animation:pulse 1.6s infinite;}
+    .wl-h1{
+      font-family:'Plus Jakarta Sans',sans-serif;
+      font-size:2rem;font-weight:800;color:var(--text);
+      line-height:1.1;letter-spacing:-0.5px;margin-bottom:10px;position:relative;z-index:1;
+    }
+    .wl-h1 em{
+      font-style:normal;
+      background:linear-gradient(90deg,var(--blue),var(--cyan));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    .wl-sub{font-size:0.8rem;color:var(--text-m);line-height:1.7;margin-bottom:20px;position:relative;z-index:1;}
+
+    .wl-trust{display:flex;align-items:center;gap:12px;position:relative;z-index:1;}
+    .trust-avatars{display:flex;}
+    .trust-av{
+      width:28px;height:28px;border-radius:50%;border:2px solid #fff;
+      background:linear-gradient(135deg,var(--blue),var(--cyan));margin-left:-8px;
+    }
+    .trust-av:first-child{margin-left:0;background:linear-gradient(135deg,var(--cyan),var(--mint));}
+    .trust-av:nth-child(2){background:linear-gradient(135deg,var(--blue),var(--blue2));}
+    .trust-txt{font-size:0.7rem;color:var(--text-m);}
+    .trust-txt strong{color:var(--blue2);font-weight:800;}
+
+    .wl-stats-row{
+      display:flex;gap:0;
+      background:rgba(255,255,255,0.75);backdrop-filter:blur(10px);
+      border:1px solid var(--border);border-radius:16px;overflow:hidden;margin:0 0 18px;
+    }
+    .wl-stat{flex:1;padding:14px 8px;text-align:center;border-right:1px solid var(--border);}
+    .wl-stat:last-child{border-right:none;}
+    .wl-stat-v{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.15rem;font-weight:800;color:var(--text);margin-bottom:2px;}
+    .wl-stat-v em{color:var(--blue);font-style:normal;}
+    .wl-stat-l{font-size:0.55rem;color:var(--text-d);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;}
+
+    .wl-feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 0 20px;}
+    .wl-feat{
+      background:rgba(255,255,255,0.75);backdrop-filter:blur(10px);
+      border:1px solid var(--border);border-radius:16px;padding:14px 12px;
+      display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow-l);
+    }
+    .wl-feat-icon{
+      width:36px;height:36px;border-radius:11px;
+      background:linear-gradient(135deg,rgba(59,130,246,0.10),rgba(6,182,212,0.15));
+      border:1px solid rgba(59,130,246,0.15);
+      display:flex;align-items:center;justify-content:center;
+    }
+    .wl-feat-icon svg{width:16px;height:16px;stroke:var(--blue);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+    .wl-feat-name{font-size:0.75rem;font-weight:700;color:var(--text);}
+    .wl-feat-desc{font-size:0.6rem;color:var(--text-m);line-height:1.45;}
+
+    .wl-btns{display:flex;flex-direction:column;gap:10px;padding:0 22px 36px;}
+
+    /* ════════ LOGIN ════════ */
+    #pg-login{background:linear-gradient(180deg,var(--bg3) 0%,var(--bg2) 100%);}
+    .auth-top{padding:20px 22px 0;display:flex;align-items:center;gap:14px;margin-bottom:26px;}
+    .back-circle{
+      width:42px;height:42px;background:rgba(255,255,255,0.8);
+      border:1px solid var(--border);border-radius:13px;
+      display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(10px);
+    }
+    .back-circle svg{width:16px;height:16px;stroke:var(--text);fill:none;stroke-width:2.2;stroke-linecap:round;}
+    .auth-ttl h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.4rem;font-weight:800;color:var(--text);letter-spacing:-0.3px;}
+    .auth-ttl p{font-size:0.76rem;color:var(--text-m);margin-top:3px;}
+
+    .auth-body{padding:0 22px 36px;}
+    .form-group{margin-bottom:16px;}
+    .form-label{display:block;font-size:0.66rem;font-weight:700;color:var(--text-m);letter-spacing:0.8px;text-transform:uppercase;margin-bottom:7px;}
+    .input-wrap{position:relative;}
+    .form-input{
+      width:100%;padding:14px 42px 14px 16px;
+      background:rgba(255,255,255,0.85);border:1.5px solid var(--border);
+      border-radius:14px;color:var(--text);
+      font-size:0.86rem;font-family:'Inter',sans-serif;
+      outline:none;transition:all 0.18s;backdrop-filter:blur(10px);
+    }
+    .form-input:focus{border-color:var(--blue);background:#fff;box-shadow:0 0 0 4px rgba(59,130,246,0.07);}
+    .form-input::placeholder{color:var(--text-d);}
+    .input-icon{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--text-d);pointer-events:none;}
+    .input-icon svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+    .forgot{text-align:right;font-size:0.74rem;color:var(--blue);font-weight:600;cursor:pointer;margin:-2px 0 18px;}
+    .divider{display:flex;align-items:center;gap:12px;margin:18px 0;}
+    .divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border);}
+    .divider span{font-size:0.7rem;color:var(--text-d);}
+    .social-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:6px;}
+    .social-btn{
+      padding:12px;background:rgba(255,255,255,0.8);
+      border:1px solid var(--border);border-radius:13px;color:var(--text);
+      font-size:0.78rem;font-weight:600;cursor:pointer;
+      display:flex;align-items:center;justify-content:center;gap:7px;transition:all 0.15s;
+    }
+    .social-btn svg{width:15px;height:15px;stroke:var(--text);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+    .social-btn:hover{border-color:rgba(59,130,246,0.30);background:#fff;}
+    .switch-link{text-align:center;font-size:0.78rem;color:var(--text-m);margin-top:20px;}
+    .switch-link a{color:var(--blue);font-weight:700;cursor:pointer;}
+
+    /* ════════ HOME ════════ */
+    #pg-home{background:linear-gradient(180deg,var(--bg2) 0%,var(--bg3) 100%);}
+
+    .home-header{padding:16px 20px 14px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0;}
+    .home-greet{font-size:0.75rem;color:var(--text-m);}
+    .home-name{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.1rem;font-weight:800;color:var(--text);margin-top:2px;}
+    .home-name em{color:var(--blue);font-style:normal;}
+    .notif-btn{
+      width:42px;height:42px;background:rgba(255,255,255,0.8);border:1px solid var(--border);
+      border-radius:13px;display:flex;align-items:center;justify-content:center;
+      cursor:pointer;position:relative;backdrop-filter:blur(10px);
+    }
+    .notif-btn svg{width:17px;height:17px;stroke:var(--text);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+    .notif-dot{position:absolute;top:9px;right:9px;width:8px;height:8px;background:var(--blue);border-radius:50%;border:2px solid #fff;}
+
+    /* Balance card */
+    .balance-card{
+      margin:0 16px 18px;
+      background:linear-gradient(135deg,var(--blue) 0%,var(--blue2) 50%,var(--cyan2) 100%);
+      border-radius:24px;padding:22px 22px 18px;position:relative;overflow:hidden;
+      box-shadow:0 10px 36px rgba(59,130,246,0.30);
+    }
+    .balance-card::before{
+      content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;
+      background:rgba(255,255,255,0.10);pointer-events:none;
+    }
+    .balance-card::after{
+      content:'';position:absolute;bottom:-40px;left:-30px;width:140px;height:140px;border-radius:50%;
+      background:rgba(6,182,212,0.20);pointer-events:none;
+    }
+    .bc-label{font-size:0.65rem;color:rgba(255,255,255,0.70);letter-spacing:1.5px;text-transform:uppercase;font-weight:700;position:relative;z-index:1;}
+    .bc-amount{font-family:'Plus Jakarta Sans',sans-serif;font-size:2.4rem;font-weight:800;color:#fff;margin:8px 0 4px;letter-spacing:-1px;position:relative;z-index:1;}
+    .bc-amount sup{font-size:1rem;font-weight:700;opacity:0.85;vertical-align:super;font-family:'Inter',sans-serif;}
+    .bc-ref{font-size:0.7rem;color:rgba(255,255,255,0.65);margin-bottom:18px;position:relative;z-index:1;}
+    .bc-row{display:flex;gap:0;position:relative;z-index:1;}
+    .bc-col{flex:1;}
+    .bc-col+.bc-col{border-left:1px solid rgba(255,255,255,0.15);padding-left:14px;}
+    .bc-col-l{font-size:0.62rem;color:rgba(255,255,255,0.65);}
+    .bc-col-v{font-size:0.85rem;font-weight:700;color:#fff;margin-top:3px;}
+    .bc-col-v.mint{color:#6ee7b7;}
+    .bc-progress{margin-top:14px;position:relative;z-index:1;}
+    .bc-progress-track{height:5px;background:rgba(255,255,255,0.18);border-radius:3px;overflow:hidden;}
+    .bc-progress-fill{height:100%;border-radius:3px;background:rgba(255,255,255,0.85);width:72%;}
+    .bc-progress-labels{display:flex;justify-content:space-between;margin-top:5px;}
+    .bc-progress-labels span{font-size:0.6rem;color:rgba(255,255,255,0.65);font-weight:600;}
+
+    /* Quick actions */
+    .qa-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:0 16px;margin-bottom:22px;}
+    .qa{display:flex;flex-direction:column;align-items:center;gap:7px;cursor:pointer;}
+    .qa-box{
+      width:54px;height:54px;
+      background:rgba(255,255,255,0.85);backdrop-filter:blur(10px);
+      border:1px solid var(--border);border-radius:18px;
+      display:flex;align-items:center;justify-content:center;transition:all 0.18s;box-shadow:var(--shadow-l);
+    }
+    .qa-box svg{width:20px;height:20px;stroke:var(--blue);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+    .qa:hover .qa-box{background:#fff;border-color:rgba(59,130,246,0.25);transform:translateY(-2px);}
+    .qa span{font-size:0.58rem;color:var(--text-m);font-weight:600;}
+
+    .sec-head{display:flex;justify-content:space-between;align-items:center;padding:0 16px;margin-bottom:14px;}
+    .sec-ttl{font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:800;color:var(--text);}
+    .sec-more{font-size:0.7rem;color:var(--blue);font-weight:700;cursor:pointer;}
+
+    /* Loan product card */
+    .product-card{
+      margin:0 16px 16px;
+      background:linear-gradient(135deg,#fff 0%,var(--bg3) 100%);
+      border:1px solid var(--border);border-radius:22px;overflow:hidden;position:relative;box-shadow:var(--shadow-l);
+    }
+    .product-card::before{
+      content:'';position:absolute;top:-30px;right:-30px;width:130px;height:130px;border-radius:50%;
+      background:radial-gradient(circle,rgba(59,130,246,0.08) 0%,transparent 70%);
+    }
+    .pc-top{padding:16px 16px 10px;position:relative;z-index:1;}
+    .pc-tag-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+    .pc-tag{
+      display:inline-flex;align-items:center;gap:5px;
+      background:rgba(59,130,246,0.07);border:1px solid rgba(59,130,246,0.18);
+      color:var(--blue);font-size:0.56rem;font-weight:800;
+      letter-spacing:1.2px;text-transform:uppercase;padding:4px 10px;border-radius:20px;
+    }
+    .pc-tag-dot{width:4px;height:4px;border-radius:50%;background:var(--blue);animation:pulse 1.6s infinite;}
+    .pc-name{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.15rem;font-weight:800;color:var(--text);letter-spacing:-0.3px;}
+    .pc-name em{color:var(--blue);font-style:normal;}
+    .pc-sub{font-size:0.7rem;color:var(--text-m);margin-top:2px;}
+    .pc-rates{display:flex;gap:8px;padding:12px 16px 0;position:relative;z-index:1;}
+    .pc-rate{
+      display:flex;flex-direction:column;align-items:center;
+      background:rgba(255,255,255,0.85);border:1px solid var(--border);
+      border-radius:12px;padding:9px 10px;flex:1;
+    }
+    .pc-rate-v{font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:800;color:var(--blue);}
+    .pc-rate-l{font-size:0.55rem;color:var(--text-d);margin-top:2px;text-align:center;font-weight:600;}
+    .pc-benefits{display:grid;grid-template-columns:1fr 1fr;gap:7px;padding:12px 16px 0;position:relative;z-index:1;}
+    .pc-benefit{display:flex;align-items:center;gap:7px;}
+    .pc-b-ico{
+      width:22px;height:22px;border-radius:7px;flex-shrink:0;
+      background:rgba(16,185,129,0.10);border:1px solid rgba(16,185,129,0.20);
+      display:flex;align-items:center;justify-content:center;
+    }
+    .pc-b-ico svg{width:11px;height:11px;stroke:var(--mint);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;}
+    .pc-b-txt{font-size:0.64rem;color:var(--text);line-height:1.3;font-weight:500;}
+    .pc-footer{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:14px 16px 16px;position:relative;z-index:1;
+      margin-top:8px;border-top:1px solid rgba(59,130,246,0.08);
+    }
+    .pc-note{font-size:0.62rem;color:var(--text-m);line-height:1.4;}
+    .pc-note strong{color:var(--blue);display:block;font-size:0.7rem;}
+    .pc-apply-btn{
+      display:flex;align-items:center;gap:6px;
+      background:linear-gradient(135deg,var(--blue),var(--blue2));
+      color:#fff;font-size:0.75rem;font-weight:800;font-family:'Inter',sans-serif;
+      padding:10px 18px;border:none;border-radius:12px;cursor:pointer;
+      white-space:nowrap;box-shadow:0 5px 16px rgba(59,130,246,0.28);transition:all 0.18s;
+    }
+    .pc-apply-btn svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+    .pc-apply-btn:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(59,130,246,0.38);}
+
+    /* ════════ APPLY ════════ */
+    .apply-header{
+      padding:18px 20px 14px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;
+      border-bottom:1px solid var(--border);
+    }
+    .apply-header h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.1rem;font-weight:800;color:var(--text);}
+    .apply-header p{font-size:0.7rem;color:var(--text-m);margin-top:1px;}
+
+    .step-indicator{display:flex;align-items:center;padding:16px 20px 14px;flex-shrink:0;}
+    .step-dot{
+      width:30px;height:30px;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      font-size:0.72rem;font-weight:700;flex-shrink:0;transition:all 0.3s;
+    }
+    .step-dot.done{background:var(--blue);color:#fff;}
+    .step-dot.active{background:linear-gradient(135deg,var(--blue),var(--cyan));color:#fff;box-shadow:0 0 0 4px rgba(59,130,246,0.15);}
+    .step-dot.pending{background:rgba(255,255,255,0.9);border:1.5px solid var(--border);color:var(--text-d);}
+    .step-line{flex:1;height:2px;margin:0 4px;transition:background 0.3s;}
+    .step-line.done{background:var(--blue);}
+    .step-line.pending{background:rgba(59,130,246,0.12);}
+
+    .apply-step{display:none;flex:1;overflow-y:auto;padding:0 20px 24px;}
+    .apply-step.active{display:block;}
+    .step-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.3rem;font-weight:800;color:var(--text);margin-bottom:6px;margin-top:4px;}
+    .step-sub{font-size:0.78rem;color:var(--text-m);line-height:1.6;margin-bottom:22px;}
+
+    .loan-type-grid{display:flex;flex-direction:column;gap:11px;margin-bottom:24px;}
+    .loan-type-item{
+      display:flex;align-items:center;gap:14px;
+      background:rgba(255,255,255,0.85);border:1.5px solid var(--border);
+      border-radius:16px;padding:14px;cursor:pointer;transition:all 0.18s;backdrop-filter:blur(10px);
+    }
+    .loan-type-item.selected{border-color:var(--blue);background:#fff;box-shadow:0 4px 14px rgba(59,130,246,0.12);}
+    .lt-icon{width:46px;height:46px;border-radius:13px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+    .lt-icon svg{width:20px;height:20px;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+    .lt-info{flex:1;}
+    .lt-name{font-size:0.9rem;font-weight:700;color:var(--text);}
+    .lt-desc{font-size:0.67rem;color:var(--text-m);margin-top:2px;}
+    .lt-rate{font-size:0.78rem;font-weight:800;color:var(--blue);margin-top:1px;}
+    .lt-check{width:24px;height:24px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.18s;}
+    .loan-type-item.selected .lt-check{background:var(--blue);border-color:var(--blue);}
+    .lt-check svg{width:13px;height:13px;stroke:#fff;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;display:none;}
+    .loan-type-item.selected .lt-check svg{display:block;}
+
+    .amount-display{
+      background:linear-gradient(135deg,var(--bg3) 0%,#e0f2fe 100%);
+      border:1px solid rgba(59,130,246,0.15);border-radius:20px;
+      padding:24px;text-align:center;margin-bottom:22px;box-shadow:var(--shadow-l);
+    }
+    .amount-label{font-size:0.65rem;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;font-weight:700;}
+    .amount-val{font-family:'Plus Jakarta Sans',sans-serif;font-size:3rem;font-weight:800;color:var(--text);letter-spacing:-1.5px;}
+    .amount-val em{color:var(--blue);font-style:normal;}
+    .amount-rate{font-size:0.8rem;color:var(--text-m);margin-top:6px;}
+
+    .slider-wrap{margin-bottom:22px;}
+    .slider-labels{display:flex;justify-content:space-between;margin-bottom:8px;}
+    .slider-labels span{font-size:0.65rem;color:var(--text-m);font-weight:600;}
+    .range-input{
+      -webkit-appearance:none;appearance:none;width:100%;height:5px;
+      background:linear-gradient(90deg,var(--blue) 55%,rgba(59,130,246,0.15) 55%);
+      border-radius:3px;outline:none;cursor:pointer;
+    }
+    .range-input::-webkit-slider-thumb{
+      -webkit-appearance:none;appearance:none;width:22px;height:22px;border-radius:50%;
+      background:#fff;border:3px solid var(--blue);cursor:pointer;
+      box-shadow:0 4px 10px rgba(59,130,246,0.25);
+    }
+
+    .term-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:22px;}
+    .term-btn{
+      padding:12px 6px;text-align:center;
+      background:rgba(255,255,255,0.85);border:1.5px solid var(--border);
+      border-radius:13px;cursor:pointer;transition:all 0.18s;
+    }
+    .term-btn.sel{border-color:var(--blue);background:#fff;box-shadow:0 3px 12px rgba(59,130,246,0.12);}
+    .term-btn .tb-val{font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:800;color:var(--text);}
+    .term-btn .tb-lbl{font-size:0.56rem;color:var(--text-d);margin-top:2px;font-weight:600;}
+    .term-btn.sel .tb-val{color:var(--blue);}
+
+    .summary-box{background:rgba(255,255,255,0.85);border:1px solid var(--border);border-radius:16px;padding:16px;backdrop-filter:blur(10px);}
+    .summary-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid rgba(59,130,246,0.07);}
+    .summary-row:last-child{border-bottom:none;}
+    .sr-label{font-size:0.72rem;color:var(--text-m);}
+    .sr-val{font-size:0.8rem;font-weight:700;color:var(--text);}
+    .sr-val.blue{color:var(--blue);}
+
+    .info-section-title{font-size:0.65rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin:18px 0 12px;}
+
+    .review-card{background:rgba(255,255,255,0.85);border:1px solid var(--border);border-radius:18px;padding:18px;margin-bottom:14px;backdrop-filter:blur(10px);}
+    .review-card-title{font-size:0.65rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+    .review-card-title svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+    .review-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid rgba(59,130,246,0.07);}
+    .review-row:last-child{border-bottom:none;}
+    .rr-l{font-size:0.72rem;color:var(--text-m);}
+    .rr-v{font-size:0.76rem;font-weight:700;color:var(--text);}
+    .rr-v.blue{color:var(--blue);}
+    .agree-row{display:flex;align-items:flex-start;gap:10px;margin:16px 0;}
+    .checkbox{width:22px;height:22px;border-radius:7px;flex-shrink:0;margin-top:1px;background:var(--blue);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;}
+    .checkbox svg{width:12px;height:12px;stroke:#fff;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;}
+    .agree-text{font-size:0.72rem;color:var(--text-m);line-height:1.55;}
+    .agree-text a{color:var(--blue);text-decoration:none;font-weight:600;}
+
+    .approved-screen{display:flex;flex-direction:column;align-items:center;padding:42px 22px 30px;text-align:center;}
+    .approved-icon{
+      width:84px;height:84px;border-radius:50%;
+      background:linear-gradient(135deg,var(--blue),var(--cyan));
+      display:flex;align-items:center;justify-content:center;
+      box-shadow:0 0 0 14px rgba(59,130,246,0.08),0 12px 36px rgba(59,130,246,0.28);margin-bottom:26px;
+    }
+    .approved-icon svg{width:38px;height:38px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+    .approved-h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.8rem;font-weight:800;color:var(--text);margin-bottom:10px;}
+    .approved-h1 em{color:var(--blue);font-style:normal;}
+    .approved-sub{font-size:0.82rem;color:var(--text-m);line-height:1.65;margin-bottom:28px;max-width:280px;}
+    .approved-card{
+      width:100%;background:linear-gradient(135deg,var(--bg3),#e0f2fe);
+      border:1px solid rgba(59,130,246,0.15);border-radius:20px;padding:22px;margin-bottom:24px;text-align:left;box-shadow:var(--shadow-l);
+    }
+    .approved-card-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(59,130,246,0.08);}
+    .approved-card-row:last-child{border-bottom:none;}
+    .acr-l{font-size:0.72rem;color:var(--text-m);}
+    .acr-v{font-size:0.78rem;font-weight:700;color:var(--text);}
+    .acr-v.blue{color:var(--blue);}
+    .acr-v.mint{color:var(--mint);}
+    .approved-btns{display:flex;flex-direction:column;gap:10px;width:100%;}
+
+    /* ════════ PAYMENTS ════════ */
+    .pay-header{padding:18px 20px 14px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+    .pay-header h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.1rem;font-weight:800;color:var(--text);}
+
+    .pay-summary{
+      margin:0 16px 18px;
+      background:linear-gradient(135deg,var(--blue) 0%,var(--cyan) 100%);
+      border-radius:22px;padding:22px;position:relative;overflow:hidden;box-shadow:var(--shadow);
+    }
+    .pay-summary::before{content:'';position:absolute;top:-50px;right:-50px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,0.12);}
+    .ps-label{font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.75);font-weight:700;margin-bottom:6px;position:relative;z-index:1;}
+    .ps-amount{font-family:'Plus Jakarta Sans',sans-serif;font-size:2.2rem;font-weight:800;color:#fff;margin-bottom:2px;position:relative;z-index:1;}
+    .ps-sub{font-size:0.72rem;color:rgba(255,255,255,0.70);margin-bottom:18px;position:relative;z-index:1;}
+    .ps-row{display:flex;justify-content:space-between;position:relative;z-index:1;}
+    .ps-field label{font-size:0.6rem;color:rgba(255,255,255,0.65);letter-spacing:1px;display:block;margin-bottom:2px;font-weight:600;}
+    .ps-field span{font-size:0.8rem;font-weight:700;color:#fff;}
+
+    .chart-card{margin:0 16px 18px;background:rgba(255,255,255,0.85);border:1px solid var(--border);border-radius:20px;padding:20px;backdrop-filter:blur(10px);box-shadow:var(--shadow-l);}
+    .chart-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+    .chart-header h4{font-size:0.82rem;font-weight:700;color:var(--text);}
+    .chart-val-big{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.7rem;font-weight:800;color:var(--blue);margin-bottom:4px;}
+    .chart-change{font-size:0.72rem;color:var(--mint);display:flex;align-items:center;gap:4px;margin-bottom:16px;font-weight:600;}
+    .chart-change svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+    .chart-svg-wrap svg{width:100%;height:90px;}
+    .chart-x{display:flex;justify-content:space-between;margin-top:8px;}
+    .chart-x span{font-size:0.6rem;color:var(--text-d);font-weight:600;}
+
+    .pay-list{padding:0 16px;display:flex;flex-direction:column;gap:10px;margin-bottom:16px;}
+    .pay-row{
+      display:flex;align-items:center;gap:12px;
+      background:rgba(255,255,255,0.85);border:1px solid var(--border);
+      border-radius:14px;padding:13px 14px;transition:all 0.18s;backdrop-filter:blur(10px);
+    }
+    .pay-row:hover{border-color:rgba(59,130,246,0.25);background:#fff;}
+    .pay-icon{width:38px;height:38px;border-radius:11px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+    .pay-icon svg{width:16px;height:16px;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+    .pay-info{flex:1;}
+    .pay-info p{font-size:0.8rem;font-weight:600;color:var(--text);}
+    .pay-info span{font-size:0.66rem;color:var(--text-m);}
+    .pay-right{text-align:right;}
+    .pay-amount{font-size:0.82rem;font-weight:700;color:var(--text);}
+    .pay-status{font-size:0.62rem;padding:3px 9px;border-radius:7px;font-weight:700;margin-top:3px;display:inline-block;}
+    .status-paid{background:rgba(16,185,129,0.10);color:var(--mint);}
+    .status-due{background:rgba(59,130,246,0.10);color:var(--blue);}
+    .status-upcoming{background:rgba(6,182,212,0.10);color:var(--cyan2);}
+
+    /* ════════ PROFILE ════════ */
+    .profile-hero{
+      background:linear-gradient(135deg,#e0f2fe 0%,#e0f7fa 50%,#f0fdf4 100%);
+      padding:28px 20px;text-align:center;position:relative;overflow:hidden;flex-shrink:0;
+    }
+    .profile-hero::after{
+      content:'';position:absolute;top:-70px;left:50%;transform:translateX(-50%);
+      width:220px;height:220px;border-radius:50%;
+      background:radial-gradient(circle,rgba(255,255,255,0.60) 0%,transparent 70%);pointer-events:none;
+    }
+    .avatar{
+      width:78px;height:78px;border-radius:50%;margin:0 auto 14px;
+      background:linear-gradient(135deg,var(--blue),var(--cyan));
+      display:flex;align-items:center;justify-content:center;
+      border:4px solid rgba(255,255,255,0.9);position:relative;z-index:1;
+      font-family:'Plus Jakarta Sans',sans-serif;font-size:1.5rem;font-weight:800;color:#fff;
+      box-shadow:0 8px 24px rgba(59,130,246,0.25);
+    }
+    .profile-name{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.2rem;font-weight:800;color:var(--text);position:relative;z-index:1;}
+    .profile-email{font-size:0.75rem;color:var(--text-m);margin-top:3px;position:relative;z-index:1;}
+    .profile-badge{
+      display:inline-flex;align-items:center;gap:6px;
+      background:rgba(255,255,255,0.80);border:1px solid rgba(59,130,246,0.20);
+      color:var(--blue);font-size:0.62rem;font-weight:700;
+      padding:5px 13px;border-radius:20px;margin-top:14px;position:relative;z-index:1;backdrop-filter:blur(10px);
+    }
+    .profile-badge svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+    .profile-stats{
+      display:flex;gap:0;margin:18px 16px 22px;
+      background:rgba(255,255,255,0.85);border:1px solid var(--border);
+      border-radius:16px;overflow:hidden;backdrop-filter:blur(10px);box-shadow:var(--shadow-l);
+    }
+    .prof-stat{flex:1;padding:14px 8px;text-align:center;border-right:1px solid var(--border);}
+    .prof-stat:last-child{border-right:none;}
+    .prof-stat-v{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.1rem;font-weight:800;color:var(--text);}
+    .prof-stat-v em{color:var(--blue);font-style:normal;}
+    .prof-stat-l{font-size:0.56rem;color:var(--text-d);text-transform:uppercase;letter-spacing:0.5px;margin-top:2px;font-weight:600;}
+
+    .menu-list{padding:0 16px;display:flex;flex-direction:column;gap:10px;margin-bottom:22px;}
+    .menu-item{
+      display:flex;align-items:center;gap:14px;
+      background:rgba(255,255,255,0.85);border:1px solid var(--border);
+      border-radius:15px;padding:15px;cursor:pointer;transition:all 0.18s;backdrop-filter:blur(10px);
+    }
+    .menu-item:hover{border-color:rgba(59,130,246,0.25);background:#fff;}
+    .menu-icon{
+      width:40px;height:40px;border-radius:12px;flex-shrink:0;
+      background:linear-gradient(135deg,rgba(59,130,246,0.08),rgba(6,182,212,0.12));
+      border:1px solid rgba(59,130,246,0.15);
+      display:flex;align-items:center;justify-content:center;
+    }
+    .menu-icon svg{width:17px;height:17px;stroke:var(--blue);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+    .menu-text{flex:1;}
+    .menu-text p{font-size:0.85rem;font-weight:600;color:var(--text);}
+    .menu-text span{font-size:0.68rem;color:var(--text-m);}
+    .menu-arrow svg{width:14px;height:14px;stroke:var(--text-d);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+    .logout-btn{
+      margin:0 16px 30px;width:calc(100% - 32px);padding:14px;
+      background:rgba(239,68,68,0.06);border:1.5px solid rgba(239,68,68,0.18);
+      border-radius:15px;color:#ef4444;font-size:0.84rem;font-weight:700;
+      font-family:'Inter',sans-serif;cursor:pointer;
+      display:flex;align-items:center;justify-content:center;gap:8px;transition:all 0.18s;
+    }
+    .logout-btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+    .logout-btn:hover{background:rgba(239,68,68,0.10);}
+
+    @media(min-width:700px){.side-panel{display:flex;}}
+    @media(max-width:420px){.phone{width:100%;max-width:390px;border-radius:32px;}body{padding:16px 10px 40px;}}
   </style>
 </head>
 <body>
-  <a class="back-btn" href="javascript:window.close()">&#8592; Back</a>
-  <div class="preview-banner">&#9670; Live Preview — Blaze Market Theme &#9670;</div>
-  <div class="coming-soon">
-    <p class="cs-tag">— Theme Preview —</p>
-    <h1 class="cs-title">Blaze <span>Market</span></h1>
-    <p class="cs-sub">High-converting shop layout with warm tones that drive action. This theme is currently being designed — check back soon.</p>
-    <div class="cs-palette">
-      <span style="background:#ff6b35"></span>
-      <span style="background:#140a00"></span>
-      <span style="background:#ffe0cc"></span>
+<div class="layout">
+  <div class="side-panel">
+    <a class="sp-back" href="javascript:window.close()">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Back
+    </a>
+    <div class="sp-tag"><div class="sp-dot"></div> Secure Loan Theme</div>
+    <div class="sp-title">Trusted.<br><em>Secure.</em> Fresh.</div>
+    <div class="sp-desc">A clean pharmacy-blue lending platform with soft white glassmorphism — fresh, professional, and deeply trustworthy for modern borrowers.</div>
+    <div class="sp-feats">
+      <div class="sp-feat"><div class="sp-feat-ico"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>Bank-grade security</div>
+      <div class="sp-feat"><div class="sp-feat-ico"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>Instant AI approval</div>
+      <div class="sp-feat"><div class="sp-feat-ico"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>Verified & trusted</div>
+      <div class="sp-feat"><div class="sp-feat-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>Decision in 2 minutes</div>
     </div>
-    <span class="cs-badge">Coming Soon</span>
   </div>
+
+  <div class="phone-col">
+    <div class="top-bar">
+      <a class="top-back-btn" href="javascript:window.close()">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Back
+      </a>
+      <span class="top-label">Live Preview</span>
+    </div>
+
+    <div class="phone">
+      <div class="status-bar">
+        <span>9:41</span>
+        <div class="sb-icons">
+          <svg viewBox="0 0 24 24"><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M10.54 16.1a6 6 0 0 1 2.92 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+          <svg viewBox="0 0 24 24"><rect x="2" y="7" width="16" height="10" rx="2"/><line x1="22" y1="11" x2="22" y2="13"/></svg>
+        </div>
+      </div>
+      <div class="demo-bar"><span></span> Interactive Demo — Tap to explore</div>
+
+      <!-- ══ WELCOME ══ -->
+      <div class="page active" id="pg-welcome">
+        <div class="page-body">
+          <div class="wl-hero">
+            <div class="wl-logo">
+              <div class="logo-box"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+              <div class="logo-name">Secure<em>Loan</em></div>
+            </div>
+            <div class="wl-tag"><div class="wl-tag-dot"></div> Trusted Lending Platform</div>
+            <div class="wl-h1">Fresh. <em>Secure.</em><br>Fast Approved.</div>
+            <div class="wl-sub">Personal, home, and business loans — with crystal-clear terms, pharmacy-grade security, and instant decisions.</div>
+            <div class="wl-trust">
+              <div class="trust-avatars">
+                <div class="trust-av"></div>
+                <div class="trust-av"></div>
+                <div class="trust-av"></div>
+              </div>
+              <div class="trust-txt"><strong>52,000+</strong> trusted borrowers</div>
+            </div>
+          </div>
+          <div style="padding:18px 20px 0">
+            <div class="wl-stats-row">
+              <div class="wl-stat"><div class="wl-stat-v"><em>$3.1B</em></div><div class="wl-stat-l">Disbursed</div></div>
+              <div class="wl-stat"><div class="wl-stat-v">99<em>%</em></div><div class="wl-stat-l">Approved</div></div>
+              <div class="wl-stat"><div class="wl-stat-v">2<em>m</em></div><div class="wl-stat-l">Decision</div></div>
+            </div>
+            <div class="wl-feat-grid">
+              <div class="wl-feat">
+                <div class="wl-feat-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                <div class="wl-feat-name">Secure & Safe</div>
+                <div class="wl-feat-desc">256-bit encrypted system</div>
+              </div>
+              <div class="wl-feat">
+                <div class="wl-feat-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+                <div class="wl-feat-name">Fast Approval</div>
+                <div class="wl-feat-desc">AI decision in 2 minutes</div>
+              </div>
+              <div class="wl-feat">
+                <div class="wl-feat-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+                <div class="wl-feat-name">Low Rates</div>
+                <div class="wl-feat-desc">From 2.5% p.a., no fees</div>
+              </div>
+              <div class="wl-feat">
+                <div class="wl-feat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                <div class="wl-feat-name">24/7 Support</div>
+                <div class="wl-feat-desc">Always here for you</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="wl-btns">
+          <button class="btn btn-blue" onclick="goTo('pg-login')">
+            <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>Apply Now — It's Free
+          </button>
+          <button class="btn btn-ghost" onclick="goTo('pg-home')">Sign In to Account</button>
+        </div>
+      </div>
+
+      <!-- ══ LOGIN ══ -->
+      <div class="page" id="pg-login">
+        <div class="page-body">
+          <div class="auth-top">
+            <div class="back-circle" onclick="goTo('pg-welcome')"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+            <div class="auth-ttl"><h2>Welcome Back</h2><p>Sign in to your SecureLoan account</p></div>
+          </div>
+          <div class="auth-body">
+            <div class="form-group"><label class="form-label">Email Address</label><div class="input-wrap"><input class="form-input" type="email" value="marcus@email.com"/><span class="input-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span></div></div>
+            <div class="form-group"><label class="form-label">Password</label><div class="input-wrap"><input class="form-input" type="password" value="password"/><span class="input-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span></div></div>
+            <div class="forgot">Forgot Password?</div>
+            <button class="btn btn-blue" onclick="goToHome()"><svg viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>Sign In</button>
+            <div class="divider"><span>or continue with</span></div>
+            <div class="social-grid">
+              <button class="social-btn"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>GitHub</button>
+              <button class="social-btn"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="21.17" y1="8" x2="12" y2="8"/></svg>Google</button>
+            </div>
+            <div class="switch-link">New here? <a onclick="goTo('pg-welcome')">Apply Now</a></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ HOME (tabs) ══ -->
+      <div class="page" id="pg-home">
+
+        <!-- HOME TAB -->
+        <div class="page-body" id="tab-content-home" style="display:block">
+          <div class="home-header">
+            <div><div class="home-greet">Good morning,</div><div class="home-name">Marcus <em>Chen</em></div></div>
+            <div class="notif-btn"><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><div class="notif-dot"></div></div>
+          </div>
+          <div class="balance-card">
+            <div class="bc-label">Outstanding Balance</div>
+            <div class="bc-amount"><sup>$</sup>22,640</div>
+            <div class="bc-ref">Loan #SL-2026-0071 · Personal Secure</div>
+            <div class="bc-row">
+              <div class="bc-col"><div class="bc-col-l">Monthly</div><div class="bc-col-v">$524 / mo</div></div>
+              <div class="bc-col"><div class="bc-col-l">Rate</div><div class="bc-col-v">3.0% p.a.</div></div>
+              <div class="bc-col"><div class="bc-col-l">Status</div><div class="bc-col-v mint">Active</div></div>
+            </div>
+            <div class="bc-progress">
+              <div class="bc-progress-track"><div class="bc-progress-fill"></div></div>
+              <div class="bc-progress-labels"><span>72% paid</span><span>$35,000</span></div>
+            </div>
+          </div>
+          <div class="qa-grid">
+            <div class="qa" onclick="switchTab('apply')"><div class="qa-box"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><span>New Loan</span></div>
+            <div class="qa" onclick="switchTab('payments')"><div class="qa-box"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><span>Pay Now</span></div>
+            <div class="qa"><div class="qa-box"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div><span>History</span></div>
+            <div class="qa" onclick="switchTab('profile')"><div class="qa-box"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><span>Profile</span></div>
+          </div>
+          <div class="sec-head"><span class="sec-ttl">Secure Loan Products</span><span class="sec-more" onclick="switchTab('apply')">Apply →</span></div>
+          <div class="product-card">
+            <div class="pc-top">
+              <div class="pc-tag-row"><div class="pc-tag"><div class="pc-tag-dot"></div> Most Secure</div></div>
+              <div class="pc-name">Personal <em>Loan</em></div>
+              <div class="pc-sub">Verified system · Fast disbursement</div>
+            </div>
+            <div class="pc-rates">
+              <div class="pc-rate"><div class="pc-rate-v">3.0%</div><div class="pc-rate-l">p.a. Rate</div></div>
+              <div class="pc-rate"><div class="pc-rate-v">$60K</div><div class="pc-rate-l">Max Amount</div></div>
+              <div class="pc-rate"><div class="pc-rate-v">84mo</div><div class="pc-rate-l">Max Term</div></div>
+            </div>
+            <div class="pc-benefits">
+              <div class="pc-benefit"><div class="pc-b-ico"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="pc-b-txt">Instant decision</div></div>
+              <div class="pc-benefit"><div class="pc-b-ico"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="pc-b-txt">No hidden fees</div></div>
+              <div class="pc-benefit"><div class="pc-b-ico"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="pc-b-txt">256-bit secure</div></div>
+              <div class="pc-benefit"><div class="pc-b-ico"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="pc-b-txt">Flexible terms</div></div>
+            </div>
+            <div class="pc-footer">
+              <div class="pc-note"><strong>Same-day funding</strong>Verified & approved</div>
+              <button class="pc-apply-btn" onclick="switchTab('apply')">Apply <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- APPLY TAB -->
+        <div class="page-body" id="tab-content-apply" style="display:none">
+          <div class="apply-header"><div><h3>Loan Application</h3><p>Secure 4-step process</p></div></div>
+          <div class="step-indicator">
+            <div class="step-dot active" id="sd1">1</div><div class="step-line pending" id="sl1"></div>
+            <div class="step-dot pending" id="sd2">2</div><div class="step-line pending" id="sl2"></div>
+            <div class="step-dot pending" id="sd3">3</div><div class="step-line pending" id="sl3"></div>
+            <div class="step-dot pending" id="sd4">4</div>
+          </div>
+
+          <div class="apply-step active" id="step1">
+            <div class="step-title">Choose Loan Type</div>
+            <div class="step-sub">All loans are fully secured and verified by our trusted system.</div>
+            <div class="loan-type-grid">
+              <div class="loan-type-item selected" onclick="selectLoanType(this)">
+                <div class="lt-icon" style="background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.18)"><svg viewBox="0 0 24 24" stroke="#2563eb"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+                <div class="lt-info"><div class="lt-name">Personal Loan</div><div class="lt-desc">Daily expenses, wellness, travel</div><div class="lt-rate">From 3.0% p.a.</div></div>
+                <div class="lt-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              </div>
+              <div class="loan-type-item" onclick="selectLoanType(this)">
+                <div class="lt-icon" style="background:rgba(6,182,212,0.08);border:1px solid rgba(6,182,212,0.18)"><svg viewBox="0 0 24 24" stroke="#0891b2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+                <div class="lt-info"><div class="lt-name">Home Loan</div><div class="lt-desc">Property purchase & renovation</div><div class="lt-rate">From 2.5% p.a.</div></div>
+                <div class="lt-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              </div>
+              <div class="loan-type-item" onclick="selectLoanType(this)">
+                <div class="lt-icon" style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.18)"><svg viewBox="0 0 24 24" stroke="#059669"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div>
+                <div class="lt-info"><div class="lt-name">Business Loan</div><div class="lt-desc">Expand your enterprise</div><div class="lt-rate">From 3.8% p.a.</div></div>
+                <div class="lt-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              </div>
+            </div>
+            <button class="btn btn-blue" onclick="nextStep(2)">Continue <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+          </div>
+
+          <div class="apply-step" id="step2">
+            <div class="step-title">Amount & Term</div>
+            <div class="step-sub">Select your loan amount and repayment schedule.</div>
+            <div class="amount-display">
+              <div class="amount-label">Loan Amount</div>
+              <div class="amount-val"><em>$</em><span id="amtDisplay">35,000</span></div>
+              <div class="amount-rate">Monthly payment: <strong style="color:var(--blue)">$524 / mo</strong></div>
+            </div>
+            <div class="slider-wrap">
+              <div class="slider-labels"><span>$1,000</span><span>$60,000</span></div>
+              <input class="range-input" type="range" min="1000" max="60000" step="1000" value="35000" oninput="updateAmount(this.value)"/>
+            </div>
+            <div style="font-size:0.65rem;color:var(--blue);margin-bottom:14px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;">Repayment Term</div>
+            <div class="term-grid">
+              <div class="term-btn" onclick="selectTerm(this)"><div class="tb-val">12</div><div class="tb-lbl">months</div></div>
+              <div class="term-btn" onclick="selectTerm(this)"><div class="tb-val">24</div><div class="tb-lbl">months</div></div>
+              <div class="term-btn" onclick="selectTerm(this)"><div class="tb-val">36</div><div class="tb-lbl">months</div></div>
+              <div class="term-btn sel" onclick="selectTerm(this)"><div class="tb-val">60</div><div class="tb-lbl">months</div></div>
+              <div class="term-btn" onclick="selectTerm(this)"><div class="tb-val">72</div><div class="tb-lbl">months</div></div>
+              <div class="term-btn" onclick="selectTerm(this)"><div class="tb-val">84</div><div class="tb-lbl">months</div></div>
+            </div>
+            <div class="summary-box" style="margin-bottom:20px">
+              <div class="summary-row"><span class="sr-label">Loan Amount</span><span class="sr-val blue" id="sumAmt">$35,000</span></div>
+              <div class="summary-row"><span class="sr-label">Interest Rate</span><span class="sr-val">3.0% p.a.</span></div>
+              <div class="summary-row"><span class="sr-label">Monthly Payment</span><span class="sr-val blue">$524</span></div>
+              <div class="summary-row"><span class="sr-label">Total Repayable</span><span class="sr-val">$41,920</span></div>
+            </div>
+            <div style="display:flex;gap:10px;">
+              <button class="btn btn-ghost" onclick="nextStep(1)" style="flex:0 0 80px;padding:15px 0">Back</button>
+              <button class="btn btn-blue" onclick="nextStep(3)" style="flex:1">Continue <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+            </div>
+          </div>
+
+          <div class="apply-step" id="step3">
+            <div class="step-title">Personal Details</div>
+            <div class="step-sub">Your information is encrypted and secured at all times.</div>
+            <div class="info-section-title">Personal Info</div>
+            <div class="form-group"><label class="form-label">Full Name</label><div class="input-wrap"><input class="form-input" value="Marcus Chen Wei"/><span class="input-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span></div></div>
+            <div class="form-group"><label class="form-label">Date of Birth</label><div class="input-wrap"><input class="form-input" value="08 September 1988"/><span class="input-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span></div></div>
+            <div class="info-section-title">Financial Info</div>
+            <div class="form-group"><label class="form-label">Employment Status</label><div class="input-wrap"><input class="form-input" value="Senior Engineer"/><span class="input-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></span></div></div>
+            <div class="form-group"><label class="form-label">Monthly Income</label><div class="input-wrap"><input class="form-input" value="$7,200"/><span class="input-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span></div></div>
+            <div style="display:flex;gap:10px;margin-top:4px;">
+              <button class="btn btn-ghost" onclick="nextStep(2)" style="flex:0 0 80px;padding:15px 0">Back</button>
+              <button class="btn btn-blue" onclick="nextStep(4)" style="flex:1">Review <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+            </div>
+          </div>
+
+          <div class="apply-step" id="step4">
+            <div class="step-title">Review & Submit</div>
+            <div class="step-sub">Please review your secure application before submitting.</div>
+            <div class="review-card">
+              <div class="review-card-title"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Loan Details</div>
+              <div class="review-row"><span class="rr-l">Type</span><span class="rr-v">Personal Loan</span></div>
+              <div class="review-row"><span class="rr-l">Amount</span><span class="rr-v blue">$35,000</span></div>
+              <div class="review-row"><span class="rr-l">Term</span><span class="rr-v">60 Months</span></div>
+              <div class="review-row"><span class="rr-l">Rate</span><span class="rr-v">3.0% p.a. Fixed</span></div>
+              <div class="review-row"><span class="rr-l">Monthly</span><span class="rr-v blue">$524 / mo</span></div>
+            </div>
+            <div class="review-card">
+              <div class="review-card-title"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Security Verified</div>
+              <div class="review-row"><span class="rr-l">Name</span><span class="rr-v">Marcus Chen</span></div>
+              <div class="review-row"><span class="rr-l">Employment</span><span class="rr-v">Senior Engineer</span></div>
+              <div class="review-row"><span class="rr-l">Income</span><span class="rr-v">$7,200 / mo</span></div>
+              <div class="review-row"><span class="rr-l">Encryption</span><span class="rr-v blue">✓ 256-bit SSL</span></div>
+            </div>
+            <div class="agree-row">
+              <div class="checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="agree-text">I agree to the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>. I confirm all information is accurate and secure.</div>
+            </div>
+            <div style="display:flex;gap:10px;">
+              <button class="btn btn-ghost" onclick="nextStep(3)" style="flex:0 0 80px;padding:15px 0">Back</button>
+              <button class="btn btn-mint" onclick="showApproved()" style="flex:1">Submit Securely <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></button>
+            </div>
+          </div>
+
+          <div class="apply-step" id="step-approved">
+            <div class="approved-screen">
+              <div class="approved-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="approved-h1">Loan <em>Approved!</em></div>
+              <div class="approved-sub">Congratulations Marcus! Your loan is approved and secured. Funds will be disbursed within 24 hours.</div>
+              <div class="approved-card">
+                <div class="approved-card-row"><span class="acr-l">Loan Amount</span><span class="acr-v blue">$35,000</span></div>
+                <div class="approved-card-row"><span class="acr-l">Interest Rate</span><span class="acr-v">3.0% p.a.</span></div>
+                <div class="approved-card-row"><span class="acr-l">Monthly Payment</span><span class="acr-v blue">$524</span></div>
+                <div class="approved-card-row"><span class="acr-l">First Payment</span><span class="acr-v">15 May 2026</span></div>
+                <div class="approved-card-row"><span class="acr-l">Status</span><span class="acr-v mint">✓ Secured & Approved</span></div>
+              </div>
+              <div class="approved-btns">
+                <button class="btn btn-blue" onclick="switchTab('home')">Go to Dashboard <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></button>
+                <button class="btn btn-ghost" onclick="switchTab('payments')">View Payment Schedule</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PAYMENTS TAB -->
+        <div class="page-body" id="tab-content-payments" style="display:none">
+          <div class="pay-header"><h3>Payments</h3><div style="font-size:0.7rem;color:var(--blue);font-weight:700;cursor:pointer">+ Make Payment</div></div>
+          <div class="pay-summary">
+            <div class="ps-label">Next Payment Due</div>
+            <div class="ps-amount">$524.00</div>
+            <div class="ps-sub">Due on April 15, 2026</div>
+            <div class="ps-row">
+              <div class="ps-field"><label>Balance</label><span>$22,640</span></div>
+              <div class="ps-field"><label>Rate</label><span>3.0%</span></div>
+              <div class="ps-field"><label>Term Left</label><span>38 mo</span></div>
+            </div>
+          </div>
+          <div class="chart-card">
+            <div class="chart-header"><h4>Repayment History</h4><span style="font-size:0.65rem;color:var(--text-d)">2026</span></div>
+            <div class="chart-val-big">$21,840</div>
+            <div class="chart-change">
+              <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              16.2% ahead of schedule
+            </div>
+            <div class="chart-svg-wrap">
+              <svg viewBox="0 0 340 90" preserveAspectRatio="none">
+                <defs><linearGradient id="cg4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3b82f6" stop-opacity="0.20"/><stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/></linearGradient></defs>
+                <path d="M0,80 C30,72 55,58 90,48 C125,38 145,62 180,42 C215,22 240,46 275,28 C300,14 320,20 340,10 L340,90 L0,90 Z" fill="url(#cg4)"/>
+                <path d="M0,80 C30,72 55,58 90,48 C125,38 145,62 180,42 C215,22 240,46 275,28 C300,14 320,20 340,10" fill="none" stroke="#3b82f6" stroke-width="2.2" stroke-linecap="round"/>
+                <circle cx="90" cy="48" r="3" fill="#3b82f6"/><circle cx="180" cy="42" r="3" fill="#3b82f6"/>
+                <circle cx="275" cy="28" r="3" fill="#3b82f6"/>
+                <circle cx="340" cy="10" r="4.5" fill="#3b82f6" stroke="rgba(59,130,246,0.25)" stroke-width="5"/>
+              </svg>
+            </div>
+            <div class="chart-x"><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span></div>
+          </div>
+          <div class="sec-head" style="margin-top:4px"><span class="sec-ttl">Payment History</span><span class="sec-more">View All</span></div>
+          <div class="pay-list">
+            <div class="pay-row"><div class="pay-icon" style="background:rgba(16,185,129,0.10)"><svg stroke="#10b981" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="pay-info"><p>March Payment</p><span>Mar 15, 2026 · #PMT-041</span></div><div class="pay-right"><div class="pay-amount">$524</div><span class="pay-status status-paid">Paid</span></div></div>
+            <div class="pay-row"><div class="pay-icon" style="background:rgba(59,130,246,0.10)"><svg stroke="#3b82f6" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="pay-info"><p>April Payment</p><span>Apr 15, 2026 · #PMT-042</span></div><div class="pay-right"><div class="pay-amount">$524</div><span class="pay-status status-due">Due Soon</span></div></div>
+            <div class="pay-row"><div class="pay-icon" style="background:rgba(6,182,212,0.10)"><svg stroke="#06b6d4" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div class="pay-info"><p>May Payment</p><span>May 15, 2026 · #PMT-043</span></div><div class="pay-right"><div class="pay-amount">$524</div><span class="pay-status status-upcoming">Upcoming</span></div></div>
+            <div class="pay-row"><div class="pay-icon" style="background:rgba(16,185,129,0.10)"><svg stroke="#10b981" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="pay-info"><p>February Payment</p><span>Feb 15, 2026 · #PMT-040</span></div><div class="pay-right"><div class="pay-amount">$524</div><span class="pay-status status-paid">Paid</span></div></div>
+          </div>
+          <div style="padding:0 16px 30px"><button class="btn btn-blue">Make a Payment <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></button></div>
+        </div>
+
+        <!-- PROFILE TAB -->
+        <div class="page-body" id="tab-content-profile" style="display:none">
+          <div class="profile-hero">
+            <div class="avatar">MC</div>
+            <div class="profile-name">Marcus Chen</div>
+            <div class="profile-email">marcus.chen@email.com</div>
+            <div class="profile-badge"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Verified Secure Account</div>
+          </div>
+          <div class="profile-stats">
+            <div class="prof-stat"><div class="prof-stat-v"><em>$35K</em></div><div class="prof-stat-l">Active Loan</div></div>
+            <div class="prof-stat"><div class="prof-stat-v">72<em>%</em></div><div class="prof-stat-l">Repaid</div></div>
+            <div class="prof-stat"><div class="prof-stat-v">835</div><div class="prof-stat-l">Credit Score</div></div>
+          </div>
+          <div class="menu-list">
+            <div class="menu-item"><div class="menu-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="menu-text"><p>Personal Information</p><span>Update your profile</span></div><div class="menu-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+            <div class="menu-item"><div class="menu-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><div class="menu-text"><p>Security & 2FA</p><span>Keep your account safe</span></div><div class="menu-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+            <div class="menu-item"><div class="menu-icon"><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div><div class="menu-text"><p>Notifications</p><span>Payment reminders</span></div><div class="menu-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+            <div class="menu-item"><div class="menu-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg></div><div class="menu-text"><p>Support Center</p><span>Chat, call, or email us</span></div><div class="menu-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+          </div>
+          <button class="logout-btn" onclick="goTo('pg-welcome')"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Sign Out</button>
+        </div>
+
+        <!-- Tab Bar -->
+        <div class="tab-bar">
+          <div class="tab-item active" id="tab-home" onclick="switchTab('home')"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></div>
+          <div class="tab-item" id="tab-apply" onclick="switchTab('apply')"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg><span>Apply</span></div>
+          <div class="tab-item" id="tab-payments" onclick="switchTab('payments')"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Payments</span></div>
+          <div class="tab-item" id="tab-profile" onclick="switchTab('profile')"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>Profile</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  function goTo(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');}
+  function goToHome(){goTo('pg-home');switchTab('home');}
+  function switchTab(tab){
+    goTo('pg-home');
+    ['home','apply','payments','profile'].forEach(t=>{const el=document.getElementById('tab-content-'+t);if(el)el.style.display='none';});
+    const target=document.getElementById('tab-content-'+tab);if(target)target.style.display='block';
+    ['home','apply','payments','profile'].forEach(t=>document.getElementById('tab-'+t).classList.remove('active'));
+    document.getElementById('tab-'+tab).classList.add('active');
+  }
+  function selectLoanType(el){document.querySelectorAll('.loan-type-item').forEach(i=>i.classList.remove('selected'));el.classList.add('selected');}
+  function selectTerm(el){document.querySelectorAll('.term-btn').forEach(b=>b.classList.remove('sel'));el.classList.add('sel');}
+  function updateAmount(val){const num=parseInt(val);document.getElementById('amtDisplay').textContent=num.toLocaleString();document.getElementById('sumAmt').textContent='$'+num.toLocaleString();}
+  function nextStep(num){
+    document.querySelectorAll('.apply-step').forEach(s=>s.classList.remove('active'));
+    document.getElementById('step'+num).classList.add('active');
+    for(let i=1;i<=4;i++){
+      const dot=document.getElementById('sd'+i);
+      if(i<num){dot.classList.remove('active','pending');dot.classList.add('done');dot.innerHTML='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';}
+      else if(i===num){dot.classList.remove('done','pending');dot.classList.add('active');dot.textContent=i;}
+      else{dot.classList.remove('done','active');dot.classList.add('pending');dot.textContent=i;}
+      if(i<4){const sl=document.getElementById('sl'+i);sl.classList.toggle('done',i<num);sl.classList.toggle('pending',i>=num);}
+    }
+    const ac=document.getElementById('tab-content-apply');if(ac)ac.scrollTop=0;
+  }
+  function showApproved(){document.querySelectorAll('.apply-step').forEach(s=>s.classList.remove('active'));document.getElementById('step-approved').classList.add('active');const ac=document.getElementById('tab-content-apply');if(ac)ac.scrollTop=0;}
+</script>
 </body>
 </html>
