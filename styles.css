@@ -1396,6 +1396,9 @@ body {
   .themes-grid { grid-template-columns:1fr; width:100%; gap:20px; }
   .theme-card { width:100%; max-width:100%; }
 
+  /* ── Gate video — fill full screen on mobile (no black bars) ── */
+  #gateBgVideo { object-fit: cover; object-position: center center; }
+
   /* ── Hero Taigy — show on mobile above welcome ── */
   .hero-taigy { display:block; }
 
