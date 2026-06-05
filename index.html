@@ -33,10 +33,12 @@
 ══════════════════════════════════════════ -->
 <div id="access-gate">
 
-  <!-- ── 3D Dragon background video (drop your file as "dragon-bg.mp4") ── -->
+  <!-- ── Dragon background video — landscape on PC, portrait on phone ── -->
   <video id="gateBgVideo" autoplay muted loop playsinline>
     <source src="dragon-bg.mp4" type="video/mp4" />
-    <source src="dragon-bg.webm" type="video/webm" />
+  </video>
+  <video id="gateBgVideoPhone" autoplay muted loop playsinline>
+    <source src="dragon-bg-phone.mp4" type="video/mp4" />
   </video>
 
   <canvas id="gateParticles"></canvas>

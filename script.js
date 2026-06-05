@@ -101,11 +101,12 @@ window.addEventListener('load', () => {
 ════════════════════════════════════════════════════════════ */
 function startEyeOpenAnimation() {
   const gate  = document.getElementById('access-gate');
-  const video = document.getElementById('gateBgVideo');
+  const videos = document.querySelectorAll('#gateBgVideo, #gateBgVideoPhone');
+  const setBgOpacity = (v) => videos.forEach(el => { el.style.opacity = v; });
   const ui    = document.querySelector('.gate-ui');
 
-  // Hide video and UI initially
-  if (video) { video.style.opacity = '0'; video.style.transition = 'none'; }
+  // Hide videos and UI initially
+  videos.forEach(el => { el.style.opacity = '0'; el.style.transition = 'none'; });
   if (ui)    { ui.style.animation  = 'none'; ui.style.opacity = '0'; }
 
   // Canvas covers entire gate
@@ -173,8 +174,8 @@ function startEyeOpenAnimation() {
       }
 
       // Fade in video as circle opens (after 30%)
-      if (p > 0.3 && video) {
-        video.style.opacity = String(Math.min((p - 0.3) / 0.7, 1) * 0.85);
+      if (p > 0.3) {
+        setBgOpacity(String(Math.min((p - 0.3) / 0.7, 1) * 0.85));
       }
 
       requestAnimationFrame(frame);
@@ -182,7 +183,7 @@ function startEyeOpenAnimation() {
     }
 
     // ── Phase 3: All revealed — show UI (2200ms+) ──
-    if (video) video.style.opacity = '0.85';
+    setBgOpacity('0.85');
     cv.remove();
 
     if (ui) {

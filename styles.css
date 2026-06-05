@@ -70,7 +70,7 @@ body {
 }
 
 /* ── Background video layer ── */
-#gateBgVideo {
+#gateBgVideo, #gateBgVideoPhone {
   position: absolute;
   inset: 0;
   width: 100%; height: 100%;
@@ -80,6 +80,8 @@ body {
   z-index: 0;
   pointer-events: none;
 }
+/* Phone video hidden on desktop */
+#gateBgVideoPhone { display: none; }
 
 #gateParticles {
   display: none; /* particle system disabled */
@@ -1396,8 +1398,9 @@ body {
   .themes-grid { grid-template-columns:1fr; width:100%; gap:20px; }
   .theme-card { width:100%; max-width:100%; }
 
-  /* ── Gate video — fill full screen on mobile (no black bars) ── */
-  #gateBgVideo { object-fit: cover; object-position: center center; }
+  /* ── Gate video — show portrait video on mobile (PC video hidden) ── */
+  #gateBgVideo { display: none; }
+  #gateBgVideoPhone { display: block; object-fit: cover; object-position: center center; }
 
   /* ── Hero Taigy — show on mobile above welcome ── */
   .hero-taigy { display:block; }
